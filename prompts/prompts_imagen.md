@@ -46,10 +46,19 @@ Reglas del contenido visual:
 - **Prohibido:** sangre, procedimientos gráficos, bocas en primer plano mostrando
   resultados, personas que parezcan pacientes reales, cualquier composición que sugiera
   un antes y después, texto, logotipos y marcas.
-- Nada de rostros reconocibles que pretendan ser el profesional del perfil: el
-  profesional se graba, no se genera.
+- **Ninguna imagen puede contener a alguien que parezca ser el profesional del
+  perfil.** El profesional se graba con cámara, no se genera. En la práctica esto
+  significa: no describas a un dentista o especialista como sujeto principal de la
+  imagen, ni siquiera "de espaldas", "sin rostro" o "no identificable". Si necesitas
+  presencia humana, que sean **manos trabajando** o personal de fondo desenfocado.
+- Prefiere las imágenes **sin personas**: instrumental, modelos dentales, el
+  microscopio, la sala, el equipo. Son las que mejor envejecen y las que nunca chocan
+  con el material real que grabe el consultorio.
 - Las personas que aparezcan son genéricas y están en situaciones neutras (escuchando
-  una explicación, en la sala de espera, el equipo trabajando).
+  una explicación, en la sala de espera). Nunca en posición de paciente en tratamiento.
+- No escribas instrucciones contradictorias en un mismo prompt, como pedir un retrato
+  en primer plano y a la vez que no se reconozca la cara. El generador obedece una de
+  las dos y no sabes cuál.
 
 {{cumplimiento}}
 

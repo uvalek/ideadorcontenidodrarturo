@@ -18,10 +18,27 @@ Fecha de hoy: {{fecha}}
 ## QUÉ BUSCAR (en este orden de prioridad)
 
 ### 1. Qué dice la evidencia actual
-Prioriza, en este orden: asociaciones y colegios profesionales de la especialidad,
-revisiones sistemáticas y guías clínicas, instituciones públicas de salud, y revistas
-con revisión por pares. Cada afirmación debe llevar **fuente y año**. Si un punto es
-materia de debate entre especialistas, dilo en lugar de elegir un bando.
+
+**Solo cuenta como evidencia lo que venga de estas fuentes:**
+
+- Asociaciones, colegios y federaciones profesionales de la especialidad
+- Revisiones sistemáticas, metaanálisis y guías clínicas
+- Instituciones públicas de salud (secretarías, institutos, organismos internacionales)
+- Revistas con revisión por pares
+
+**No cuenta como evidencia**, aunque aparezca primero en el buscador: el blog de una
+clínica, la página de servicios de un consultorio, un portal de citas médicas, una
+marca de tratamientos o cualquier sitio que además venda eso de lo que habla. Son
+competencia haciendo marketing, y su contenido está escrito para vender, no para
+informar. Si encuentras un dato solo ahí, **no lo uses**.
+
+Cada afirmación debe llevar **fuente y año**. Si un punto es materia de debate entre
+especialistas, dilo en lugar de elegir un bando. Si para algún apartado solo encuentras
+fuentes comerciales, escribe "Sin evidencia sólida encontrada" y sigue: es un resultado
+útil, porque le avisa al equipo que ese dato no se puede afirmar al aire.
+
+Las fuentes comerciales sí sirven para **una sola cosa**: ver qué está diciendo la
+competencia, y eso va en el apartado de ángulos poco explotados, nunca en este.
 
 ### 2. Preguntas reales de los pacientes
 Qué está buscando y preguntando la gente sobre este tema: dudas frecuentes, miedos,
@@ -80,6 +97,10 @@ software. Nada de eso sirve para el contenido de un consultorio.
 ## Fuentes
 1. [Nombre de la fuente] — [organización], [año]. [URL si la tienes]
 ```
+
+En el apartado de fuentes van **solo** las que respaldan afirmaciones de evidencia.
+No incluyas ahí las páginas comerciales que hayas mirado para el análisis de
+competencia.
 
 Sé breve y concreto. Vale más una página con seis datos verificables que tres páginas
 de generalidades. Si no encuentras evidencia sólida sobre algún punto, escribe

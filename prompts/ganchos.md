@@ -27,15 +27,44 @@ prometer nada.
 | 7-8 | **Autoridad** | Habla desde el criterio y la experiencia del profesional |
 | 9-10 | **Prevención / alerta** | Señala algo que conviene revisar. Educativo, nunca alarmista |
 
+## LO QUE SEPARA UN GANCHO DE UN TÍTULO
+
+Un gancho no anuncia el tema: crea una razón para quedarse. "Te explico las
+diferencias entre brackets y alineadores" es un título. "Hay un movimiento que los
+alineadores no pueden hacer" es un gancho.
+
+Estas tres cosas lo convierten en gancho, y **son compatibles con todas las reglas de
+cumplimiento**:
+
+- **Lo concreto gana a lo general.** Un detalle específico ("hay un movimiento
+  que…", "la pregunta que más me hacen a los 40") jala más que una categoría
+  ("las diferencias", "lo que debes saber").
+- **Una afirmación con filo, no una descripción.** Toma postura sobre el tema, no
+  sobre las personas: "el más caro no siempre es el que necesitas" es filo legítimo;
+  "los que te venden alineadores te engañan" es desprestigiar y está prohibido.
+- **Deja un hueco.** Si el gancho ya contiene toda la respuesta, no hay motivo para
+  ver el video.
+
+Prohibido para conseguir filo: exagerar, asustar, prometer resultados, insinuar que
+otros profesionales hacen mal su trabajo o inventar cifras. El filo sale de ser
+**específico y honesto**, nunca de subir el volumen.
+
 ## REGLAS
 
-- **Máximo 15 palabras por gancho.** Cuéntalas.
-- Se dicen en voz alta en 3 segundos. Si no se puede, es muy largo.
-- Los de **Prevención / alerta** señalan una señal a revisar y remiten a valoración.
-  Prohibido: consecuencias catastróficas, urgencia falsa, culpa, miedo.
-- Los de **Autoridad** solo pueden usar credenciales y años de experiencia que estén
-  en el perfil, textualmente.
+- **Máximo 15 palabras por gancho.** Cuéntalas de verdad, palabra por palabra.
+- Se dicen en voz alta en 3 segundos. Léelo en tu cabeza: si no cabe, recórtalo.
+- **Escríbelos como se hablan.** Sin dos puntos explicativos, sin "en este video",
+  sin "te explico" como muletilla en más de uno, y sin la fórmula
+  "Qué / Cómo / Cuál… , explicado claro".
+- Los de **Autoridad** salen de la experiencia y el criterio del profesional, dichos en
+  voz alta: "llevo veinte años viendo este error", "esto es lo primero que reviso".
+  **Nunca copies la credencial en formato de currículum**, con siglas de universidad o
+  años entre paréntesis. Solo puedes usar credenciales que estén en el perfil, pero las
+  pronuncias, no las citas.
+- Los de **Prevención / alerta** señalan una señal que conviene revisar y remiten a
+  valoración. Prohibido: consecuencias catastróficas, urgencia falsa, culpa, miedo.
 - Nada de cifras que no vengan de la investigación con fuente.
+- Los 10 tienen que ser distintos entre sí. Si dos empiezan igual, reescribe uno.
 
 {{cumplimiento}}
 
