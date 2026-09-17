@@ -1,0 +1,26 @@
+# Lo que NO entra en la imagen.
+#
+# Ojo con las reglas genéricas tipo "*.md": las plantillas de prompts son
+# archivos .md y son imprescindibles en runtime. Una exclusión amplia con una
+# negación después funciona, pero es frágil: si alguien reordena las líneas,
+# la imagen se construye igual y falla al generar el primer contenido, que es
+# el peor momento para enterarse. Mejor listar lo que sobra, una cosa por
+# línea, sin comodines que puedan morder de más.
+
+.venv/
+venv/
+__pycache__/
+*.pyc
+.env
+.env.local
+.env.example
+.git/
+.gitignore
+.DS_Store
+salidas/
+scripts/
+referencia/
+supabase/
+README.md
+Dockerfile
+.dockerignore
