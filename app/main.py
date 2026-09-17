@@ -16,8 +16,9 @@ import logging
 from contextlib import asynccontextmanager
 
 import httpx
-from fastapi import APIRouter, FastAPI, HTTPException, status
+from fastapi import APIRouter, FastAPI, HTTPException, Request, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from app import db, esquemas, flujo, imagenes as img, plantillas, worker
@@ -59,6 +60,29 @@ app.add_middleware(
     allow_methods=["GET", "POST"],
     allow_headers=["Authorization", "Content-Type"],
 )
+
+@app.exception_handler(Exception)
+async def fallo_inesperado(request: Request, fallo: Exception) -> JSONResponse:
+    """
+    Convierte cualquier error no previsto en una respuesta normal.
+
+    Sin esto, una excepción que se escape devuelve un 500 crudo que NO pasa por
+    el middleware de CORS, y entonces el navegador informa "bloqueado por CORS"
+    en vez del error real. Se persigue un problema de permisos que no existe
+    mientras el de verdad queda invisible. Pasó exactamente así con el join mal
+    leído de `contenido_ideas`.
+    """
+    log.exception("Error no previsto en %s", request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": (
+                "Algo falló en el servidor y no estaba previsto. "
+                "Revisa los logs del servicio para ver el detalle."
+            )
+        },
+    )
+
 
 # Todo lo que cuelga de aquí exige sesión de un correo autorizado.
 privado = APIRouter(dependencies=[SocioActual])
@@ -205,7 +229,8 @@ async def regenerar_pieza(pieza_id: str) -> dict:
     if not pieza:
         raise HTTPException(404, "Esa pieza no existe.")
 
-    idea_fila = pieza.get("ideas") or {}
+    # La clave la pone PostgREST con el nombre de la tabla, que lleva prefijo.
+    idea_fila = pieza.get("contenido_ideas") or {}
     idea = idea_fila.get("data") or {}
     generacion = db.obtener_generacion(idea_fila.get("generacion_id"))
     if not generacion:

@@ -215,7 +215,10 @@ def obtener_idea(idea_id: str) -> dict[str, Any] | None:
     r = (
         cliente()
         .table("contenido_ideas")
-        .select("id, orden, data, generacion_id, contenido_generaciones(id, cliente_id, investigacion)")
+        # Sin joins: `generacion_id` ya viene aquí y el resto se pide aparte.
+        # Un join anidado obliga a leer el resultado con el nombre de la tabla
+        # como clave, y ese desajuste ya costó un error una vez.
+        .select("id, orden, data, generacion_id")
         .eq("id", idea_id)
         .maybe_single()
         .execute()
