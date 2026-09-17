@@ -72,6 +72,10 @@ async def procesar(fila: dict[str, Any]) -> None:
         db.actualizar_generacion(
             gid,
             investigacion=resultado.investigacion,
+            # El resumen estratégico (por cuál empezar, en qué orden publicar)
+            # viene junto a las ideas pero no pertenece a ninguna, así que vive
+            # en la generación.
+            resumen=(resultado.ideas or {}).get("resumen_estrategico") or {},
             latido_en=db.ahora(),
         )
 

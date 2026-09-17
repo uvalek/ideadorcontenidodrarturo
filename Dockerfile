@@ -34,9 +34,15 @@ USER adlek
 
 EXPOSE 8000
 
-# EasyPanel usa esta comprobación para saber si la app está viva y para no
-# mandar tráfico a un contenedor que todavía está arrancando.
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
-  CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/salud', timeout=5)"
+# Sin HEALTHCHECK a propósito.
+#
+# Cuando Docker marca un contenedor como "unhealthy", el enrutador de EasyPanel
+# deja de mandarle tráfico y responde 502 "Service is not reachable", aunque la
+# aplicación esté funcionando perfectamente por dentro. El diagnóstico es
+# confuso: los logs muestran la app trabajando y el dominio da error.
+#
+# EasyPanel ya vigila el contenedor por su cuenta, así que esta comprobación no
+# añadía nada y sí podía dejar el servicio incomunicado. Para saber si está
+# vivo está /salud, que se consulta a mano cuando hace falta.
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]

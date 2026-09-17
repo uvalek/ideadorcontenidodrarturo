@@ -57,6 +57,9 @@ create table if not exists public.contenido_generaciones (
   progreso           integer not null default 0,
   detalle            text not null default '',
   investigacion      text not null default '',
+  -- Por cuál idea conviene empezar y en qué orden publicarlas. Viene junto a
+  -- las ideas pero no pertenece a ninguna, así que vive aquí.
+  resumen            jsonb not null default '{}'::jsonb,
   error_msg          text,
   advertencias       jsonb not null default '[]'::jsonb,
   tokens_entrada     integer not null default 0,

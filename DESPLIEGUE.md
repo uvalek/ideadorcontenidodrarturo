@@ -147,7 +147,8 @@ espera callado hasta que haya trabajo.
 
 | Lo que ves | Qué suele ser |
 |---|---|
-| Error 502 en el dominio | El puerto no es 8000, o la app no arrancó. Mira los Logs |
+| Error 502 en el dominio | El puerto del dominio no es 8000. Pestaña Domains → Port |
+| 502 y "Service is not reachable" con la app viva en los Logs | El enrutador no encuentra un contenedor sano. Redespliega; si sigue, revisa que el puerto sea 8000 |
 | El navegador no encuentra el dominio | El DNS todavía no propaga. Espera |
 | `El worker no pudo conectarse a Supabase` en los logs | Falta o está mal `SUPABASE_URL` o `SUPABASE_SERVICE_ROLE_KEY` |
 | `"investigacion": false` en `/salud` | Falta `PERPLEXITY_API_KEY`. Todo lo demás sigue funcionando |
