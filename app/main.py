@@ -106,7 +106,7 @@ async def crear_generacion(cuerpo: NuevaGeneracion) -> dict:
 
     fila = (
         db.cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .insert(
             {
                 "cliente_id": cuerpo.cliente_id,
@@ -138,7 +138,7 @@ async def reintentar(generacion_id: str) -> dict:
 
     # Se borran los resultados anteriores: las ideas se van en cascada y con
     # ellas sus piezas e imágenes.
-    db.cliente().table("ideas").delete().eq("generacion_id", generacion_id).execute()
+    db.cliente().table("contenido_ideas").delete().eq("generacion_id", generacion_id).execute()
     db.actualizar_generacion(
         generacion_id,
         estado="pendiente",
@@ -192,7 +192,7 @@ async def regenerar_pieza(pieza_id: str) -> dict:
     if pieza["tipo"] == "prompts_imagen":
         hermana = (
             db.cliente()
-            .table("piezas")
+            .table("contenido_piezas")
             .select("data")
             .eq("idea_id", pieza["idea_id"])
             .eq("tipo", "tiktok")
@@ -208,7 +208,7 @@ async def regenerar_pieza(pieza_id: str) -> dict:
             )
         variables["guion"] = flujo._guion_para_prompt(guion)
 
-    db.cliente().table("piezas").update({"estado": "generando"}).eq(
+    db.cliente().table("contenido_piezas").update({"estado": "generando"}).eq(
         "id", pieza_id
     ).execute()
 

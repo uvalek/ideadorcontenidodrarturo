@@ -12,7 +12,7 @@
 -- adicional sobre cómo habla y qué criterio tiene el doctor.
 -- ============================================================
 
-insert into public.clientes (nombre, slug, perfil, conocimiento, activo)
+insert into public.contenido_clientes (nombre, slug, perfil, conocimiento, activo)
 values (
   'SWISS Dental',
   'swiss-dental',

@@ -33,7 +33,7 @@ def prompts_de_la_idea(idea: dict) -> list[str]:
     """Saca los `prompt_completo` de la pieza de imágenes de esa idea."""
     r = (
         db.cliente()
-        .table("piezas")
+        .table("contenido_piezas")
         .select("data")
         .eq("idea_id", idea["id"])
         .eq("tipo", "prompts_imagen")

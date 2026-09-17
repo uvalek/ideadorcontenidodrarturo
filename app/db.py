@@ -39,7 +39,7 @@ def ahora() -> str:
 def obtener_cliente_contenido(cliente_id: str) -> dict[str, Any] | None:
     r = (
         cliente()
-        .table("clientes")
+        .table("contenido_clientes")
         .select("id, nombre, slug, perfil, conocimiento, activo")
         .eq("id", cliente_id)
         .maybe_single()
@@ -56,7 +56,7 @@ ESTADOS_ACTIVOS = ["investigando", "generando_ideas", "generando_piezas"]
 def siguiente_pendiente() -> dict[str, Any] | None:
     r = (
         cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .select("*")
         .eq("estado", "pendiente")
         .order("creada_en")
@@ -69,7 +69,7 @@ def siguiente_pendiente() -> dict[str, Any] | None:
 def contar_activas() -> int:
     r = (
         cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .select("id", count="exact")
         .in_("estado", ESTADOS_ACTIVOS)
         .execute()
@@ -88,7 +88,7 @@ def tomar(generacion_id: str) -> bool:
     """
     r = (
         cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .update({"estado": "investigando", "progreso": 1, "latido_en": ahora()})
         .eq("id", generacion_id)
         .eq("estado", "pendiente")
@@ -98,7 +98,7 @@ def tomar(generacion_id: str) -> bool:
 
 
 def actualizar_generacion(generacion_id: str, **campos: Any) -> None:
-    cliente().table("generaciones").update(campos).eq("id", generacion_id).execute()
+    cliente().table("contenido_generaciones").update(campos).eq("id", generacion_id).execute()
 
 
 def latir(generacion_id: str, estado: str, progreso: int, detalle: str) -> None:
@@ -124,7 +124,7 @@ def rescatar_colgadas(minutos: int = 5) -> list[str]:
 
     r = (
         cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .select("id")
         .in_("estado", ESTADOS_ACTIVOS)
         .lt("latido_en", corte)
@@ -149,7 +149,7 @@ def rescatar_colgadas(minutos: int = 5) -> list[str]:
 def guardar_idea(generacion_id: str, orden: int, data: dict[str, Any]) -> str:
     r = (
         cliente()
-        .table("ideas")
+        .table("contenido_ideas")
         .insert({"generacion_id": generacion_id, "orden": orden, "data": data})
         .execute()
     )
@@ -164,7 +164,7 @@ def guardar_pieza(
 ) -> None:
     (
         cliente()
-        .table("piezas")
+        .table("contenido_piezas")
         .upsert(
             {
                 "idea_id": idea_id,
@@ -182,8 +182,8 @@ def guardar_pieza(
 def obtener_pieza(pieza_id: str) -> dict[str, Any] | None:
     r = (
         cliente()
-        .table("piezas")
-        .select("id, idea_id, tipo, ideas(id, data, generacion_id)")
+        .table("contenido_piezas")
+        .select("id, idea_id, tipo, contenido_ideas(id, data, generacion_id)")
         .eq("id", pieza_id)
         .maybe_single()
         .execute()
@@ -194,8 +194,8 @@ def obtener_pieza(pieza_id: str) -> dict[str, Any] | None:
 def obtener_idea(idea_id: str) -> dict[str, Any] | None:
     r = (
         cliente()
-        .table("ideas")
-        .select("id, orden, data, generacion_id, generaciones(id, cliente_id, investigacion)")
+        .table("contenido_ideas")
+        .select("id, orden, data, generacion_id, contenido_generaciones(id, cliente_id, investigacion)")
         .eq("id", idea_id)
         .maybe_single()
         .execute()
@@ -206,7 +206,7 @@ def obtener_idea(idea_id: str) -> dict[str, Any] | None:
 def obtener_generacion(generacion_id: str) -> dict[str, Any] | None:
     r = (
         cliente()
-        .table("generaciones")
+        .table("contenido_generaciones")
         .select("*")
         .eq("id", generacion_id)
         .maybe_single()
@@ -223,7 +223,7 @@ def crear_filas_imagenes(idea_id: str, prompts: list[str]) -> list[dict[str, Any
     ]
     r = (
         cliente()
-        .table("imagenes")
+        .table("contenido_imagenes")
         .upsert(filas, on_conflict="idea_id,orden")
         .execute()
     )
@@ -231,13 +231,13 @@ def crear_filas_imagenes(idea_id: str, prompts: list[str]) -> list[dict[str, Any
 
 
 def actualizar_imagen(imagen_id: str, **campos: Any) -> None:
-    cliente().table("imagenes").update(campos).eq("id", imagen_id).execute()
+    cliente().table("contenido_imagenes").update(campos).eq("id", imagen_id).execute()
 
 
 def imagenes_de(idea_id: str) -> list[dict[str, Any]]:
     r = (
         cliente()
-        .table("imagenes")
+        .table("contenido_imagenes")
         .select("*")
         .eq("idea_id", idea_id)
         .order("orden")
