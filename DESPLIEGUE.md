@@ -58,7 +58,7 @@ Pestaña **Environment**. Pega esto y **rellena lo que está vacío**:
 SUPABASE_URL=https://krechsbybhebtjopekum.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=
 ADMIN_EMAILS=alekhammer13@gmail.com
-ORIGENES_PERMITIDOS=https://adlek.com.mx
+ORIGENES_PERMITIDOS=https://adlek.com.mx,https://www.adlek.com.mx
 OPENAI_API_KEY=
 OPENAI_MODEL=gpt-5-mini
 PERPLEXITY_API_KEY=
@@ -83,7 +83,7 @@ Guarda.
 | Variable | Para qué |
 |---|---|
 | `ADMIN_EMAILS` | Quién puede pedir generaciones. Separados por coma |
-| `ORIGENES_PERMITIDOS` | Desde qué sitios se acepta una llamada |
+| `ORIGENES_PERMITIDOS` | Desde qué sitios se acepta una llamada. **Con y sin `www`:** para el navegador son sitios distintos |
 | `OPENAI_MODEL` | El modelo. Se cambia aquí, sin tocar código |
 | `MAX_GENERACIONES_ACTIVAS` | Cuántos temas a la vez. Súbelo solo si hace falta: cada uno cuesta |
 | `MAX_IDEAS` | Tope de ideas por tema |
@@ -152,7 +152,7 @@ espera callado hasta que haya trabajo.
 | El navegador no encuentra el dominio | El DNS todavía no propaga. Espera |
 | `El worker no pudo conectarse a Supabase` en los logs | Falta o está mal `SUPABASE_URL` o `SUPABASE_SERVICE_ROLE_KEY` |
 | `"investigacion": false` en `/salud` | Falta `PERPLEXITY_API_KEY`. Todo lo demás sigue funcionando |
-| El panel dice "Failed to fetch" | `ORIGENES_PERMITIDOS` no incluye el sitio desde el que llamas |
+| El panel dice que no puede contactar al servicio | `ORIGENES_PERMITIDOS` no incluye el sitio desde el que llamas. Mira la barra del navegador: si dice `www.`, esa forma también tiene que estar en la lista |
 | Generaciones que se quedan en "pendiente" | El worker no está corriendo. Revisa los Logs y redespliega |
 | El build falla | Revisa que **Build Method** sea Dockerfile y no Nixpacks |
 
