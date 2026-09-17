@@ -144,6 +144,26 @@ def rescatar_colgadas(minutos: int = 5) -> list[str]:
     return ids
 
 
+def temas_ya_generados(cliente_id: str, limite: int = 60) -> list[str]:
+    """
+    Los temas que ya se pidieron para este cliente.
+
+    Se le pasan al agente de temas para que no proponga lo mismo otra vez.
+    Incluye los que fallaron a propósito: si un tema ya se intentó, volver a
+    sugerirlo tampoco aporta.
+    """
+    r = (
+        cliente()
+        .table("contenido_generaciones")
+        .select("tema")
+        .eq("cliente_id", cliente_id)
+        .order("creada_en", desc=True)
+        .limit(limite)
+        .execute()
+    )
+    return [fila["tema"] for fila in (r.data or []) if fila.get("tema")]
+
+
 # ── ideas, piezas e imágenes ─────────────────────────────────
 
 def guardar_idea(generacion_id: str, orden: int, data: dict[str, Any]) -> str:

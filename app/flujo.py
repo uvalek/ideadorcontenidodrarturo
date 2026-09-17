@@ -126,6 +126,44 @@ async def investigar(cliente: httpx.AsyncClient, encargo: Encargo) -> str:
     return await px.investigar(cliente, sistema, encargo.tema)
 
 
+async def sugerir_temas(
+    cliente: httpx.AsyncClient,
+    perfil: dict[str, Any],
+    conocimiento: str,
+    cuantos: int,
+    ya_usados: list[str],
+    uso: oa.Uso,
+) -> esquemas.SalidaTemas:
+    """
+    Propone temas a partir del perfil, sin desarrollarlos.
+
+    Es el paso previo para quien no conoce el nicho y no sabe qué pedir. No
+    investiga ni escribe nada: una sola llamada, rápida y barata.
+    """
+    lista = (
+        "\n".join(f"- {t}" for t in ya_usados)
+        if ya_usados
+        else "(Ninguno todavía: es la primera vez que se generan temas para este cliente.)"
+    )
+
+    sistema = plantillas.construir(
+        "temas",
+        perfil_cliente=perfil_mod.formatear(perfil),
+        conocimiento=conocimiento or SIN_CONOCIMIENTO,
+        ya_usados=lista,
+        cuantos=cuantos,
+        aviso_cofepris=perfil_mod.aviso_cofepris(perfil),
+    )
+    return await oa.agente(
+        cliente,
+        sistema,
+        f"Propón {cuantos} temas para este cliente.",
+        esquemas.SalidaTemas,
+        uso=uso,
+        etiqueta="temas",
+    )
+
+
 async def generar_ideas(
     cliente: httpx.AsyncClient,
     encargo: Encargo,

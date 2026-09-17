@@ -59,6 +59,27 @@ class SalidaIdeas(Base):
     )
 
 
+# ── Temas (la lluvia de ideas previa) ────────────────────────────────
+
+class Tema(Base):
+    id: int
+    tema: str
+    pilar: str = ""
+    audiencia: str = ""
+    potencial: str = ""
+    por_que: str = ""
+
+
+class PorDondeEmpezar(Base):
+    recomendados: list[int] = Field(default_factory=list)
+    razon: str = ""
+
+
+class SalidaTemas(Base):
+    temas: list[Tema]
+    por_donde_empezar: PorDondeEmpezar = Field(default_factory=PorDondeEmpezar)
+
+
 # ── Guion de Reels ───────────────────────────────────────────────────
 
 class DesglosePorSecciones(Base):

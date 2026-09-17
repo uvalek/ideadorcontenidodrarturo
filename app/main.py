@@ -152,6 +152,43 @@ async def reintentar(generacion_id: str) -> dict:
     return {"id": generacion_id, "estado": "pendiente"}
 
 
+# ── Lluvia de temas ──────────────────────────────────────────
+
+class PedirTemas(BaseModel):
+    cliente_id: str
+    cuantos: int = Field(default=15, ge=5, le=30)
+
+
+@privado.post("/temas")
+async def sugerir_temas(cuerpo: PedirTemas) -> dict:
+    """
+    Propone temas a partir del perfil del cliente.
+
+    Es el paso previo a generar: para quien no conoce el nicho, la página en
+    blanco es el problema de verdad. No investiga ni escribe piezas, así que
+    cuesta una fracción de una generación y tarda medio minuto.
+    """
+    cliente_contenido = db.obtener_cliente_contenido(cuerpo.cliente_id)
+    if not cliente_contenido or not cliente_contenido.get("activo"):
+        raise HTTPException(404, "Ese cliente no existe o está desactivado.")
+
+    uso = oa.Uso()
+    try:
+        async with httpx.AsyncClient() as http:
+            salida = await flujo.sugerir_temas(
+                http,
+                cliente_contenido.get("perfil") or {},
+                (cliente_contenido.get("conocimiento") or "").strip(),
+                cuerpo.cuantos,
+                db.temas_ya_generados(cuerpo.cliente_id),
+                uso,
+            )
+    except Exception as fallo:  # noqa: BLE001
+        raise HTTPException(502, worker._legible(fallo)) from fallo
+
+    return {**salida.model_dump(), "tokens": uso.total}
+
+
 # ── Regenerar una pieza suelta ───────────────────────────────
 
 AGENTES = {
