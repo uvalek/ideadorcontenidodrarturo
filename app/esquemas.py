@@ -103,6 +103,12 @@ class DatosImportantes(Base):
     contacto_sugerido: str = ""
 
 
+class CtaAlternativo(Base):
+    texto: str
+    tipo: str = ""
+    cuando_usarlo: str = ""
+
+
 class SalidaGuion(Base):
     tipo_video: str = ""
     tema_especifico: str = ""
@@ -114,6 +120,7 @@ class SalidaGuion(Base):
     )
     elementos_visuales: ElementosVisuales = Field(default_factory=ElementosVisuales)
     datos_importantes: DatosImportantes = Field(default_factory=DatosImportantes)
+    ctas_alternativos: list[CtaAlternativo] = Field(default_factory=list)
     hashtags_sugeridos: list[str] = Field(default_factory=list)
     descripcion_post: str = ""
 

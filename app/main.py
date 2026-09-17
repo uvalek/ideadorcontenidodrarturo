@@ -14,6 +14,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from contextlib import asynccontextmanager
+from typing import Literal
 
 import httpx
 from fastapi import APIRouter, FastAPI, HTTPException, Request, status
@@ -108,6 +109,8 @@ class NuevaGeneracion(BaseModel):
     tema: str = Field(min_length=3, max_length=500)
     audiencia: str = ""
     plataforma: str = "ambas"
+    objetivo: Literal["organico", "anuncio"] = "organico"
+    landing_url: str = ""
     num_ideas: int = Field(default=5, ge=1, le=10)
     usar_investigacion: bool = True
 
@@ -128,6 +131,17 @@ async def crear_generacion(cuerpo: NuevaGeneracion) -> dict:
     if not cliente or not cliente.get("activo"):
         raise HTTPException(404, "Ese cliente no existe o está desactivado.")
 
+    landing = cuerpo.landing_url.strip()
+    if cuerpo.objetivo == "anuncio":
+        # Sin destino, un anuncio no tiene a dónde mandar a nadie: el guion
+        # saldría con un cierre vacío y habría que rehacerlo entero.
+        if not landing:
+            raise HTTPException(
+                400, "Un anuncio necesita la dirección de la página a la que manda."
+            )
+        if not landing.startswith(("http://", "https://")):
+            landing = f"https://{landing}"
+
     fila = (
         db.cliente()
         .table("contenido_generaciones")
@@ -137,6 +151,8 @@ async def crear_generacion(cuerpo: NuevaGeneracion) -> dict:
                 "tema": cuerpo.tema.strip(),
                 "audiencia": cuerpo.audiencia.strip(),
                 "plataforma": cuerpo.plataforma,
+                "objetivo": cuerpo.objetivo,
+                "landing_url": landing,
                 "num_ideas": cuerpo.num_ideas,
                 "usar_investigacion": cuerpo.usar_investigacion,
                 "estado": "pendiente",
@@ -247,6 +263,9 @@ async def regenerar_pieza(pieza_id: str) -> dict:
         or flujo.SIN_CONOCIMIENTO,
         "idea": flujo._resumen_idea(idea),
         "investigacion": generacion.get("investigacion") or flujo.SIN_INVESTIGACION,
+        # Si la generación era un anuncio, la pieza regenerada también lo es.
+        "objetivo": generacion.get("objetivo") or "organico",
+        "landing_url": generacion.get("landing_url") or "",
         "aviso_cofepris": (cliente_contenido.get("perfil") or {}).get("aviso_cofepris", ""),
     }
 

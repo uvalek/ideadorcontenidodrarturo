@@ -23,6 +23,8 @@ Número de ideas a generar: {{num_ideas}}
 
 {{investigacion}}
 
+{{modo}}
+
 ## CÓMO PENSAR CADA IDEA
 
 Reparte las ideas entre estas estructuras, sin repetir dos veces la misma si puedes

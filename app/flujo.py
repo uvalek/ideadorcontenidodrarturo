@@ -41,6 +41,8 @@ class Encargo:
     conocimiento: str = ""
     audiencia: str = ""
     plataforma: str = "ambas"
+    objetivo: str = "organico"
+    landing_url: str = ""
     num_ideas: int = 5
     usar_investigacion: bool = True
 
@@ -174,6 +176,8 @@ async def generar_ideas(
         "ideas",
         perfil_cliente=perfil_mod.formatear(encargo.perfil),
         conocimiento=encargo.conocimiento or SIN_CONOCIMIENTO,
+        objetivo=encargo.objetivo,
+        landing_url=encargo.landing_url,
         tema=encargo.tema,
         audiencia=encargo.audiencia or "La que mejor le quede a cada idea",
         plataforma=encargo.plataforma,
@@ -220,6 +224,8 @@ async def piezas_de_una_idea(
     comunes = {
         "perfil_cliente": perfil_mod.formatear(encargo.perfil),
         "conocimiento": encargo.conocimiento or SIN_CONOCIMIENTO,
+        "objetivo": encargo.objetivo,
+        "landing_url": encargo.landing_url,
         "idea": _resumen_idea(idea),
         "investigacion": investigacion or SIN_INVESTIGACION,
         "aviso_cofepris": perfil_mod.aviso_cofepris(encargo.perfil),

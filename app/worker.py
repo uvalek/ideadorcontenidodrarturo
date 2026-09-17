@@ -55,6 +55,8 @@ async def procesar(fila: dict[str, Any]) -> None:
             conocimiento=conocimiento,
             audiencia=fila.get("audiencia") or "",
             plataforma=fila.get("plataforma") or "ambas",
+            objetivo=fila.get("objetivo") or "organico",
+            landing_url=fila.get("landing_url") or "",
             num_ideas=fila.get("num_ideas") or 5,
             usar_investigacion=bool(fila.get("usar_investigacion")),
         )

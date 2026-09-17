@@ -56,9 +56,16 @@ def construir(nombre: str, **variables: Any) -> str:
     """
     texto = _leer(RAIZ_PROMPTS / f"{nombre}.md")
 
+    # `modo` sale de un archivo distinto según el objetivo: un guion para pauta
+    # se escribe diferente a uno orgánico, no solo en el cierre. Quien edite los
+    # prompts cambia ese bloque en un sitio y aplica a todos los agentes.
+    objetivo = variables.pop("objetivo", "organico")
+    archivo_modo = "modo_anuncio.md" if objetivo == "anuncio" else "modo_organico.md"
+
     comunes = {
         "cumplimiento": _leer(RAIZ_PROMPTS / "comun" / "cumplimiento.md"),
         "salida_json": _leer(RAIZ_PROMPTS / "comun" / "salida_json.md"),
+        "modo": _leer(RAIZ_PROMPTS / "comun" / archivo_modo),
     }
     texto = _sustituir(texto, comunes)
     return _sustituir(texto, variables)

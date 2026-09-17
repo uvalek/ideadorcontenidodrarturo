@@ -70,6 +70,8 @@ otros profesionales hacen mal su trabajo o inventar cifras. El filo sale de ser
 - Nada de cifras que no vengan de la investigación con fuente.
 - Los 10 tienen que ser distintos entre sí. Si dos empiezan igual, reescribe uno.
 
+{{modo}}
+
 {{cumplimiento}}
 
 {{salida_json}}

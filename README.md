@@ -92,6 +92,26 @@ Y dos bloques que se comparten entre todos:
 |---|---|
 | `comun/cumplimiento.md` | Las reglas de contenido de salud. **Se editan aquí una vez y aplican a los seis** |
 | `comun/salida_json.md` | La instrucción de responder en JSON |
+| `comun/modo_anuncio.md` | Cómo cambia todo cuando el contenido es pauta |
+| `comun/modo_organico.md` | Lo mismo para contenido normal |
+
+### Contenido u anuncio
+
+Al generar se elige entre los dos, y no cambia solo el cierre:
+
+| | Contenido | Anuncio |
+|---|---|---|
+| Quién lo va a ver | Alguien que ya te sigue | Un desconocido al que le apareció |
+| La primera frase | Puede dar contexto | Nombra el problema, ya |
+| La presentación | Al principio | Después de decir algo útil, en una frase |
+| El cierre | Guardar, comentar, escribir | A la página, diciendo qué hay ahí |
+
+El anuncio pide una dirección de destino, que se escribe en cada generación y no
+en el perfil: la misma clínica puede pautar hacia páginas distintas según la
+campaña.
+
+Todos los guiones, de los dos tipos, traen **cinco llamados a la acción** para
+elegir sin reescribir el final.
 
 ### Las variables
 
