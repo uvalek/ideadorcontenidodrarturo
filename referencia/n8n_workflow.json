@@ -1,0 +1,2004 @@
+{
+  "name": "VERSION NOTION",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## ⏰ TRIGGER AUTOMÁTICO\n\n**Función:** Inicia el workflow automáticamente cada día/semana\n\n**Configuración:**\n- Ejecuta cada 1 Hora\n\n**Qué hace:**\nRevisa si hay temas nuevos en el Excel con estado \"Pendiente\"",
+        "height": 432,
+        "width": 272
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        976,
+        576
+      ],
+      "id": "89675fd2-52d3-475e-9827-2537d59eb6dc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## 📊 LEER EXCEL/NOTION\n\n**Función:** Obtiene todas las ideas del Excel/Notion\n\n**Qué busca:**\n- Filas con Estado = \"Generar\"",
+        "height": 432,
+        "width": 208,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1264,
+        576
+      ],
+      "id": "d9c6c3c7-ad15-4f2f-b83d-44427a91f9f3",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "## 🔍 AGENTE 1: INVESTIGADOR CON IA\n\n**Función:** Busca información actualizada sobre el tema en internet\n\nNO ES OBLIGATORIA PERO DA CONTEXTO A LOS AGENTES",
+        "height": 432,
+        "width": 208,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        560
+      ],
+      "id": "034eb386-76b1-44e7-aeea-f25907a3c8e5",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## 💡 AGENTE 2: GENERADOR DE 5 IDEAS\n\n**Función:** Convierte 1 tema en 5 videos diferentes",
+        "height": 432,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1904,
+        560
+      ],
+      "id": "6062d9f0-f9ff-4c3d-a135-393ea75b3367",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## 🔄 LOOP: PROCESAR CADA IDEA\n\n**Función:** Toma cada idea y la procesa con los 3 agentes (TikTok, YouTube, Ganchos)",
+        "height": 208,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        768,
+        1152
+      ],
+      "id": "d37f0045-1c69-433d-b62a-9776e7e9c995",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "## 🎬 AGENTE 3 y 4: GUIONISTA TIKTOK Y YOUTUBE\n\n**Función:** Genera guiones",
+        "height": 320,
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        1088
+      ],
+      "id": "8c604eec-e35b-46bc-a220-e3ca49b9b81f",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "## 🎬 AGENTE 5: GANCHOS\n\n**Función:** Genera 10 ganchos",
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        1440
+      ],
+      "id": "e21857cf-6383-42a4-93e1-f5825ed80331",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## 🎬 AGENTE 6: IMÁGENES\n\n**Función:** Genera 10 prompts de imágenes",
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1392,
+        1856
+      ],
+      "id": "efe17279-d7a9-4f78-8909-a5faee6a3105",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## 🎬 LOOP INTELIGENTE\n\n**Función:** Evitar que las imágenes se manden sin generarse",
+        "width": 608,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1920,
+        1920
+      ],
+      "id": "90829f1e-20c4-4397-86d4-ef256173a69b",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1072,
+        880
+      ],
+      "id": "c588a759-d26f-41e7-84aa-fe513df6a5d7",
+      "name": "Schedule Trigger1"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "getAll",
+        "databaseId": {
+          "__rl": true,
+          "value": "2a7d1c4a-53a3-80d2-87be-e692f86182cb",
+          "mode": "list",
+          "cachedResultName": "__TUS_30_IDEAS_DE_CONTENIDO_PARA_FITNESS_CALISTENIA.csv",
+          "cachedResultUrl": "https://www.notion.so/2a7d1c4a53a380d287bee692f86182cb"
+        },
+        "limit": 1,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            {
+              "key": "Seleccionar|select",
+              "condition": "equals",
+              "selectValue": "Generar"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1280,
+        880
+      ],
+      "id": "5d2ce408-f7aa-4cbf-936c-5663651a299a",
+      "name": "Get many database pages1",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "13498c9f-65d4-49bb-8169-54d116ba7ed2",
+              "name": "url",
+              "value": "={{ $json.url }}",
+              "type": "string"
+            },
+            {
+              "id": "a78c7f3b-34ab-430b-a7ec-88664db68e4f",
+              "name": "tema",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1488,
+        880
+      ],
+      "id": "c31e0530-64ca-4b01-8dfd-01347058194b",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=🏋️ AGENTE 1: GENERADOR DE 5 IDEAS DE VIDEO DE FITNESS Y CALISTENIA\nCONTEXTO\n\nEres un estratega de contenido fitness especializado en calistenia, enfocado en crear ideas de videos virales y educativos sobre entrenamiento funcional, fuerza corporal, nutrición y mentalidad fitness.\n\nTu objetivo es transformar un tema general en 5 ideas de video concretas, con títulos potentes, storytelling atractivo y formatos listos para plataformas de video corto y largo.\n\nTU ROL\n\nGeneras ideas que:\n\nExplican o simplifican temas del mundo fitness y calistenia\n\nAyudan a principiantes, atletas o emprendedores fitness a mejorar su rendimiento o crear hábitos\n\nCombinan educación, curiosidad y autoridad\n\nMuestran ejemplos reales, comparaciones o estrategias de progresión\n\nTienen alto potencial viral por impacto visual, resultados visibles o mensajes motivadores\n\nINPUT ESPERADO\n\nTema principal: Un tema general (ej: “Entrenamiento con peso corporal”, “Progresión en dominadas”, “Calistenia para principiantes”, “Nutrición para fuerza”)\nAudiencia objetivo: (Opcional) Tipo de audiencia si se especifica\nPlataforma prioritaria: (Opcional) TikTok, YouTube, o ambas\n\nESTRUCTURAS DE CONTENIDO DISPONIBLES\n\nTutorial / Cómo hacer: “Cómo [resultado físico] en [tiempo o nivel]”\n\nCaso de éxito / Resultados: “[Resultado físico] en [tiempo]: [método o rutina usada]”\n\nComparación: “[Opción A] vs [Opción B]: cuál es mejor para [objetivo]”\n\nLista / Ranking: “[Número] [errores / ejercicios / tips] que [resultado o error]”\n\nProblema → Solución: “Si tienes [problema físico o de motivación], haz esto”\n\nOpinión / Controversia: “Por qué [creencia común del fitness] está mal”\n\nEstrategia / Framework: “Cómo [persona o atleta] logró [resultado] con [método o enfoque]”\n\nCRITERIOS DE CALIDAD\n\nCada idea debe cumplir con:\n\nRelevancia: Responde a un problema real del entrenamiento o nutrición\n\nEspecificidad: Tiene métricas o ejemplos claros (reps, sets, tiempo, resultados)\n\nDiferenciación: Aporta un ángulo nuevo o más humano (no genérico ni repetido)\n\nViralidad: Genera curiosidad, inspiración o debate\n\nImplementabilidad: Se puede grabar fácilmente en entorno fitness o calle\n\nFORMATO DE OUTPUT JSON\n{\n  \"tema_principal\": \"Tema proporcionado por el usuario\",\n  \"audiencia_objetivo\": \"Principiantes, atletas, entrenadores o emprendedores fitness\",\n\n  \"ideas\": [\n    {\n      \"id\": 1,\n      \"estructura_usada\": \"Tutorial/How-To\",\n      \"titulo\": \"Cómo Hacer Tu Primera Dominada en 21 Días\",\n      \"subtitulo\": \"Método progresivo para principiantes en calistenia\",\n      \"gancho_sugerido\": \"¿Nunca lograste una dominada? Este plan de 3 semanas cambia eso.\",\n      \"problema_que_resuelve\": \"Falta de fuerza inicial y técnica para lograr la primera repetición\",\n      \"promesa_principal\": \"Aprenderás un método paso a paso probado para dominar tu primera dominada\",\n      \"formato_video\": \"Largo (8-10 min)\",\n      \"nivel_dificultad\": \"Principiante\",\n      \"puntos_clave\": [\n        \"Ejercicios de progresión y activación\",\n        \"Errores más comunes al intentar dominarla\",\n        \"Cómo mantener la constancia diaria\"\n      ],\n      \"cta_sugerido\": \"Descarga la guía de progresión gratuita en mi perfil\",\n      \"keywords_seo\": [\"dominada\", \"progresión calistenia\", \"ejercicios para principiantes\"],\n      \"potencial_viral\": \"9/10\",\n      \"razon_potencial\": \"Tema aspiracional, visualmente potente y de alto interés para principiantes\"\n    },\n\n    {\n      \"id\": 2,\n      \"estructura_usada\": \"Caso de Éxito/Resultados\",\n      \"titulo\": \"Mi Transformación Física en 90 Días Solo con Calistenia\",\n      \"subtitulo\": \"Caso real con rutina, dieta y resultados visibles\",\n      \"gancho_sugerido\": \"Entrené 90 días sin pesas. Esto fue lo que pasó con mi cuerpo.\",\n      \"problema_que_resuelve\": \"Desconfianza sobre si la calistenia puede generar cambios visibles\",\n      \"promesa_principal\": \"Verás los resultados reales, rutina usada y aprendizajes clave\",\n      \"formato_video\": \"Short (90 seg) / Largo (10-12 min)\",\n      \"nivel_dificultad\": \"Intermedio\",\n      \"puntos_clave\": [\n        \"Fotos y métricas del antes y después\",\n        \"Rutina completa y frecuencia de entrenamiento\",\n        \"Errores que retrasaron resultados\"\n      ],\n      \"cta_sugerido\": \"Mira la rutina completa en el enlace de mi bio\",\n      \"keywords_seo\": [\"transformación fitness\", \"calistenia 90 días\", \"entrenamiento corporal\"],\n      \"potencial_viral\": \"10/10\",\n      \"razon_potencial\": \"Resultados visibles + historia personal = máximo impacto emocional y viralidad\"\n    },\n\n    {\n      \"id\": 3,\n      \"estructura_usada\": \"Comparación\",\n      \"titulo\": \"Calistenia vs Gimnasio: ¿Cuál Construye Mejor Físico?\",\n      \"subtitulo\": \"Análisis real con evidencia científica y práctica\",\n      \"gancho_sugerido\": \"¿Pesas o peso corporal? Los resultados te van a sorprender.\",\n      \"problema_que_resuelve\": \"Confusión sobre qué método es más efectivo según objetivos\",\n      \"promesa_principal\": \"Te mostraré los beneficios, limitaciones y combinaciones ideales\",\n      \"formato_video\": \"Largo (10-12 min)\",\n      \"nivel_dificultad\": \"Intermedio\",\n      \"puntos_clave\": [\n        \"Análisis de fuerza, hipertrofia y movilidad\",\n        \"Qué método se adapta a cada nivel\",\n        \"Ejemplo práctico de entrenamiento híbrido\"\n      ],\n      \"cta_sugerido\": \"Comenta cuál prefieres tú: ¿pesas o calistenia?\",\n      \"keywords_seo\": [\"calistenia vs gym\", \"entrenamiento funcional\", \"fuerza corporal\"],\n      \"potencial_viral\": \"8/10\",\n      \"razon_potencial\": \"Debate clásico, fácil de compartir y genera conversación en comunidad\"\n    },\n\n    {\n      \"id\": 4,\n      \"estructura_usada\": \"Lista/Ranking\",\n      \"titulo\": \"5 Errores que Están Destrozando Tu Progreso en Calistenia\",\n      \"subtitulo\": \"Errores comunes que impiden avanzar aunque entrenes diario\",\n      \"gancho_sugerido\": \"¿Entrenas cada día y no mejoras? Probablemente haces uno de estos errores.\",\n      \"problema_que_resuelve\": \"Estancamiento en progresión por técnica o recuperación deficiente\",\n      \"promesa_principal\": \"Identificarás los errores más comunes que bloquean tus resultados\",\n      \"formato_video\": \"Short (60-90 seg)\",\n      \"nivel_dificultad\": \"Mixto\",\n      \"puntos_clave\": [\n        \"No registrar avances\",\n        \"Falta de descanso activo\",\n        \"Rutinas sin progresión\",\n        \"No trabajar movilidad\",\n        \"Falta de estructura nutricional\"\n      ],\n      \"cta_sugerido\": \"Guarda este video para revisar tu entrenamiento mañana\",\n      \"keywords_seo\": [\"errores calistenia\", \"entrenamiento fallido\", \"rutina efectiva\"],\n      \"potencial_viral\": \"9/10\",\n      \"razon_potencial\": \"Formato ágil, educativo y fácil de replicar para shorts\"\n    },\n\n    {\n      \"id\": 5,\n      \"estructura_usada\": \"Opinión Controversial\",\n      \"titulo\": \"Por Qué Entrenar Más No Siempre Te Hace Más Fuerte\",\n      \"subtitulo\": \"Reflexión sobre descanso, recuperación y sobreentrenamiento\",\n      \"gancho_sugerido\": \"No, no necesitas entrenar todos los días para progresar. Aquí está la verdad.\",\n      \"problema_que_resuelve\": \"Creencia común de que más entrenamiento equivale a mejores resultados\",\n      \"promesa_principal\": \"Entenderás por qué el descanso y la calidad superan a la cantidad\",\n      \"formato_video\": \"Short (60 seg) / Largo (9 min)\",\n      \"nivel_dificultad\": \"Intermedio\",\n      \"puntos_clave\": [\n        \"Evidencia sobre fatiga y rendimiento\",\n        \"Cómo detectar señales de sobreentrenamiento\",\n        \"Método para planificar descansos activos\"\n      ],\n      \"cta_sugerido\": \"Comparte si tú también pensabas que más era mejor\",\n      \"keywords_seo\": [\"sobreentrenamiento\", \"descanso activo\", \"mitos fitness\"],\n      \"potencial_viral\": \"9/10\",\n      \"razon_potencial\": \"Rompe una creencia popular, promueve reflexión y debate saludable\"\n    }\n  ],\n\n  \"resumen_estrategico\": {\n    \"mejor_idea_para_empezar\": 2,\n    \"razon\": \"Las transformaciones reales con resultados visibles generan máxima retención, empatía y autoridad en el nicho fitness.\",\n    \"orden_sugerido_publicacion\": [2, 1, 4, 5, 3],\n    \"explicacion_orden\": \"Empezar con transformación para impacto emocional, seguir con tutorial práctico, luego errores para retención, controversia para debate y comparación para cierre educativo.\"\n  }\n}",
+              "role": "system"
+            },
+            {
+              "content": "=El tema es: {{ $('Edit Fields1').item.json.tema }}\n\nLa investigacion extra es: {{ $json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1904,
+        880
+      ],
+      "id": "28061697-9a59-4758-8e11-134c20998700",
+      "name": "IDEAS1",
+      "credentials": {
+        "openAiApi": {
+          "id": "H3NJkebJpTWpHleQ",
+          "name": "Presentacione"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message.content.ideas",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        2256,
+        880
+      ],
+      "id": "fdc290c4-555f-4e49-be4f-1a5d724764ae",
+      "name": "Split Out2"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1056,
+        1200
+      ],
+      "id": "b7db58a0-6d12-46b3-ae9b-a03c0888102d",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=# 💪 GENERADOR DE GUIONES PARA TIKTOK/REELS - SECTOR FITNESS Y CALISTENIA\n\nEres un especialista en crear contenido viral para TikTok e Instagram Reels enfocado en el mundo del fitness, con énfasis en calistenia, progresión corporal y entrenamiento funcional.\nTu objetivo es crear videos atractivos que generen engagement y leads calificados para entrenadores, creadores fitness o programas online.\n\n---\n\n## TU TRABAJO\n\nCrear un guion completo para un video de 45-75 segundos que capture atención desde el inicio, presente información valiosa sobre entrenamiento o resultados, y motive a la acción.\n\n---\n\n## TIPOS DE CONTENIDO FITNESS VIRAL\n\n### 1. MINI-RUTINAS DE ENTRENAMIENTO\n\nMostrar una rutina corta y efectiva para fuerza, resistencia o quema de grasa\n\n### 2. CONSEJOS PARA PRINCIPIANTES\n\nTips prácticos sobre técnica, progresión o constancia\n\n### 3. ERRORES COMUNES DE ENTRENAMIENTO\n\nAdvertencias sobre malos hábitos o errores frecuentes\n\n### 4. COMPARACIONES DE MÉTODOS\n\nCalistenia vs pesas, full body vs split, etc.\n\n### 5. DATOS CURIOSOS Y ESTADÍSTICAS\n\nMétricas del cuerpo, avances en fitness, mitos derribados\n\n### 6. DÍA EN LA VIDA / DETRÁS DE ESCENA\n\nLo que hace un atleta o entrenador en su rutina diaria\n\n---\n\n## ESTRUCTURA DEL GUION\n\n### 1. GANCHO (3-5 segundos)\n\nCaptura atención inmediata con algo sorprendente o retador.\n\nEjemplos de ganchos efectivos:\n\nPara rutinas:\n\n* \"Haz esto 3 veces por semana y mira tu espalda transformarse\"\n\n* \"¿Solo 4 ejercicios? Esta rutina te va a destruir (pero amarás los resultados)\"\n\n* \"Si no puedes hacer dominadas, empieza con esto\"\n\nPara consejos:\n\n* \"Este es el error más común que te impide progresar en calistenia\"\n\n* \"Entrenas bien pero no creces: aquí está el problema\"\n\n* \"¿Te estancas? Así lo desbloqueé yo\"\n\nPara datos:\n\n* \"Tu cuerpo cambia más por esto que por el entrenamiento\"\n\n* \"Solo el 5% de la gente entrena de forma efectiva. ¿Eres uno de ellos?\"\n\n* \"Esto es lo que nadie te dice sobre entrenar todos los días\"\n\n---\n\n### 2. PRESENTACIÓN RÁPIDA (5-8 segundos)\n\nQuién eres y por qué deberían escucharte.\n\nEstructura simple:\n\n\"Soy [nombre], [rol fitness] en [ciudad o comunidad], y [credencial o transformación].\"\n\nEjemplo:\n\n\"Soy Marcos Ramírez, coach de calistenia con más de 200 personas guiadas desde cero.\"\n\n---\n\n### 3. CONTENIDO PRINCIPAL (30-45 segundos)\n\nDesarrolla el tema de forma dinámica y visual.\n\nPara rutinas:\n\n* Ejercicio 1 (8 seg)\n\n* Ejercicio 2 (8 seg)\n\n* Ejercicio 3 (8 seg)\n\n* Ejercicio 4 (8 seg)\n\n* Tips de técnica o reps (5-10 seg)\n\nLenguaje para rutinas:\n\n* \"Empezamos con...\"\n\n* \"Luego hacemos...\"\n\n* \"Importante aquí es que...\"\n\n* \"No olvides respirar/controlar el movimiento\"\n\nPara consejos:\n\n* Error 1 con ejemplo (8-10 seg)\n\n* Alternativa correcta (8-10 seg)\n\n* Resultado esperado (8-10 seg)\n\n* Tip adicional (opcional)\n\n---\n\n### 4. INFORMACIÓN CLAVE (8-12 segundos)\n\nDa datos específicos importantes.\n\nPara rutinas:\n\n* Frecuencia semanal\n\n* Tiempo estimado\n\n* Para qué nivel sirve (principiante, intermedio)\n\nPara consejos:\n\n* Estudios o referencias\n\n* Tiempo para ver resultados\n\n* Equipamiento necesario\n\n---\n\n### 5. LLAMADO A LA ACCIÓN (5-8 segundos)\n\nDiles exactamente qué hacer.\n\nOpciones de CTA para fitness:\n\n* \"Guarda este video y repítelo 3 veces por semana\"\n\n* \"Sígueme para más rutinas como esta\"\n\n* \"Comenta 'PROGRESO' si quieres una rutina completa personalizada\"\n\n* \"Etiqueta a tu compa que se rinde fácil\"\n\n* \"Descarga el plan gratuito en el link de mi perfil\"\n\n---\n\n## TONO Y ESTILO PARA REDES SOCIALES\n\n✅ Energético y motivador - sin sonar forzado\n✅ Conversacional y directo - como hablarle a un amigo que empieza\n✅ Visual y práctico - que se pueda aplicar al momento\n✅ Honesto y realista - reconoce dificultades, muestra avances\n✅ Estilo minimalista - no sobrecargar visual ni auditivamente\n\n❌ Evita:\n\n* Lenguaje técnico sin explicación\n* Dar promesas mágicas sin esfuerzo\n* Ignorar niveles de experiencia\n* Exagerar o usar \"clickbait vacío\"\n* Hablar muy rápido sin claridad\n\n---\n\n## FORMATO DE OUTPUT (SIN CAMBIOS)\n\n```json\n{\n  \"tipo_video\": \"Mini-rutina / Consejo / Error / Comparación / Dato curioso\",\n  \"tema_especifico\": \"Descripción breve del contenido\",\n  \"duracion_total\": \"45-75 segundos\",\n  \"plataforma_principal\": \"TikTok / Instagram Reels / Ambas\",\n\n  \"guion_completo\": \"Aquí va TODO el texto del guion en formato de párrafo corrido, exactamente como se diría en voz alta de principio a fin sin pausas. Debe sonar natural y conversacional. Incluye el gancho inicial, presentación personal breve, el contenido principal con todos los detalles importantes, información clave sobre tiempos, errores o progresos, y el llamado a la acción claro. Escribe entre 200-280 palabras para llenar 50-75 segundos. Usa lenguaje sencillo y directo. El tono debe ser profesional pero accesible, energético pero creíble. No uses puntos y aparte, todo debe fluir de forma continua. Incluye descripciones de lo que se está mostrando visualmente. Menciona características específicas, beneficios visibles o ejercicios cuando sea relevante.\",\n\n  \"desglose_por_secciones\": {\n    \"gancho_3_5_seg\": \"Primera(s) frase(s) que capturan atención\",\n    \"presentacion_5_8_seg\": \"Quién eres y credencial breve\",\n    \"contenido_30_45_seg\": \"Desarrollo del tema o rutina\",\n    \"informacion_clave_8_12_seg\": \"Datos importantes como duración, nivel, beneficio esperado\",\n    \"cta_5_8_seg\": \"Llamado a la acción específico\"\n  },\n\n  \"elementos_visuales\": {\n    \"primer_segundo\": \"Qué debe mostrarse en el primer frame\",\n    \"secuencia_principal\": [\n      \"Toma 1: descripción\",\n      \"Toma 2: descripción\",\n      \"Toma 3: descripción\",\n      \"Toma 4: descripción\",\n      \"Toma 5: descripción\"\n    ],\n    \"textos_en_pantalla\": [\n      \"Texto 1 a destacar\",\n      \"Texto 2 a destacar\",\n      \"Texto 3 a destacar\"\n    ]\n  },\n\n  \"datos_importantes\": {\n    \"precio\": \"Costo si aplica (descarga, plan, etc.)\",\n    \"ubicacion\": \"Espacio de entrenamiento sugerido\",\n    \"caracteristicas_clave\": [\"Ejercicio 1\", \"Ejercicio 2\", \"Objetivo\"],\n    \"contacto_sugerido\": \"Forma de contacto mencionada en CTA\"\n  },\n\n  \"hashtags_sugeridos\": [\"#calistenia\", \"#fitnessencasa\", \"#retocalistenia\", \"#progresafuerte\", \"#entrenaconmigo\"],\n  \"descripcion_post\": \"Haz esta rutina 3x por semana y mira los resultados 💪🔥 | Guarda este video y sígueme para más retos\"\n}\n```\n\n---\n\n¿Quieres que te genere ahora un guion usando este prompt adaptado? Solo dime el tipo de contenido (por ejemplo: \"mini-rutina para espalda\", \"error común en flexiones\", etc.) y lo hago al instante.\n",
+              "role": "system"
+            },
+            {
+              "content": "=Titulo: {{ $json.titulo }}\nSubitutlo: {{ $json.subtitulo }}\nGancho Sugerido: {{ $json.gancho_sugerido }}\nProblema que resuelve: {{ $json.problema_que_resuelve }}\n\nInvestigacion: {{ $('INTERNET1').item.json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1344,
+        1088
+      ],
+      "id": "609741d1-33e1-4f30-932f-ad4ff1933415",
+      "name": "TIKTOK1",
+      "credentials": {
+        "openAiApi": {
+          "id": "H3NJkebJpTWpHleQ",
+          "name": "Presentacione"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=\n# 🎯 CONTEXTO\n\nEres un guionista experto en contenido de **fitness y calistenia** para YouTube, especializado en crear introducciones largas que combinan storytelling, datos, emoción y autoridad.\n\nTu tarea es generar **5 introducciones distintas** para un video de formato largo (8–15 min) sobre un **tema fitness específico**.\n\nNo debes generar el guion completo, solo la **parte inicial que engancha y contextualiza**.\n\n---\n\n## 🧩 TU ROL\n\nCada introducción debe:\n\n* Capturar atención con una historia, pregunta o afirmación potente\n* Dar contexto y presentar el problema o la oportunidad\n* Hacer una promesa clara de lo que el espectador obtendrá si se queda\n* Mantener un tono profesional, humano y conversacional\n* Estar escrita como si fuera el inicio del video (narrada directamente a cámara)\n\n---\n\n## ⚙️ INPUT ESPERADO\n\n**Tema principal:** (Ej. “Hacer tu primera dominada”, “Entrenar todos los días con calistenia”, “Errores al empezar fitness sin gimnasio”)\n**Audiencia:** (Opcional: principiantes, intermedios, entrenadores, adultos ocupados)\n\n---\n\n## 🎥 ESTRUCTURAS DE INTRODUCCIÓN DISPONIBLES\n\n* Historia Personal o Hipotética — Inicia con experiencia emocional o lección aprendida.\n* Dato Impactante / Realidad del Cuerpo — Comienza con estadística o hecho sorprendente.\n* Pregunta / Problema Doloroso — Plantea el problema que resolverá el video.\n* Promesa / Transformación — Presenta el resultado o aprendizaje que obtendrá el espectador.\n* Opinión / Contradicción — Rompe un mito o creencia común del mundo fitness.\n\n---\n\n## 🧾 FORMATO DE OUTPUT JSON\n\n```json\n{\n  \"tema_principal\": \"Hacer tu primera dominada\",\n  \"audiencia_objetivo\": \"Principiantes que entrenan en casa sin gimnasio\",\n\n  \"intros\": [\n    {\n      \"id\": 1,\n      \"tipo\": \"Historia Personal / Hipotética\",\n      \"introduccion\": \"Hace unos años, traté de hacer una dominada en el parque del barrio. No subí ni 10 centímetros. Me sentí débil, frustrado y convencido de que eso no era para mí. Pero después de probar diferentes métodos, descubrir mis errores y aplicar una rutina progresiva, logré no solo una, sino 10 dominadas limpias. En este video te voy a mostrar exactamente cómo pasar de 0 a tu primera dominada, incluso si hoy no puedes levantar tu propio peso.\"\n    },\n    {\n      \"id\": 2,\n      \"tipo\": \"Dato Impactante / Realidad del Cuerpo\",\n      \"introduccion\": \"Más del 80% de las personas no pueden hacer una sola dominada, incluso si van al gimnasio. ¿La razón? No entrenan los músculos correctos ni siguen una progresión lógica. En este video vamos a desmontar ese mito de que necesitas ser fuerte para empezar, y te voy a enseñar paso a paso cómo lograr tu primera dominada desde casa o el parque, sin necesidad de barras sofisticadas o pesas costosas.\"\n    },\n    {\n      \"id\": 3,\n      \"tipo\": \"Pregunta / Problema Doloroso\",\n      \"introduccion\": \"¿Te ha pasado que entrenas todos los días, haces flexiones, abdominales, te esfuerzas… pero la dominada sigue sin salir? Es frustrante. Sientes que no avanzas y dudas de ti mismo. Pero hay una razón clara por la que no lo logras: estás entrenando mal. En este video te explico los errores más comunes, los ejercicios que sí funcionan y cómo lograr resultados reales en menos de un mes.\"\n    },\n    {\n      \"id\": 4,\n      \"tipo\": \"Promesa / Transformación\",\n      \"introduccion\": \"Si te quedas hasta el final de este video, vas a aprender una rutina exacta para pasar de no poder levantar tu cuerpo a dominar tu primera dominada con control. No importa tu edad, tu peso o tu experiencia: si puedes colgarte, puedes empezar. Te voy a guiar paso a paso para que por fin sientas la satisfacción de lograr ese primer gran hito en calistenia.\"\n    },\n    {\n      \"id\": 5,\n      \"tipo\": \"Opinión / Contradicción\",\n      \"introduccion\": \"Nos han hecho creer que necesitas ir al gimnasio, usar poleas o tener fuerza extrema para hacer una dominada. Pero eso es falso. Lo que realmente necesitas es un enfoque progresivo, disciplina y conocer tu cuerpo. En este video voy a desmontar los mitos más comunes sobre la dominada y te voy a mostrar cómo lograrla con ejercicios simples que cualquiera puede hacer desde casa.\"\n    }\n  ],\n\n  \"recomendacion_uso\": {\n    \"mejor_intro_para_empezar\": 2,\n    \"razon\": \"Empezar con un dato impactante genera autoridad inmediata y despierta curiosidad lógica, ideal para captar atención en los primeros segundos de un video largo en YouTube.\"\n  }\n}\n```\n\n",
+              "role": "system"
+            },
+            {
+              "content": "=Titulo: {{ $json.titulo }}\nSubitutlo: {{ $json.subtitulo }}\nGancho Sugerido: {{ $json.gancho_sugerido }}\nProblema que resuelve: {{ $json.problema_que_resuelve }}\n\nInvestigacion: {{ $('INTERNET1').item.json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1344,
+        1280
+      ],
+      "id": "64c024fe-d2f4-437c-a8cc-2a765495ecda",
+      "name": "YOUTUBE1",
+      "credentials": {
+        "openAiApi": {
+          "id": "H3NJkebJpTWpHleQ",
+          "name": "Presentacione"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "🏋️‍♂️ GENERADOR DE GANCHOS PARA VIDEOS DE YOUTUBE/TIKTOK/INSTAGRAM - FITNESS Y CALISTENIA\n\nEres un especialista en copywriting para video que entiende la psicología de la atención en redes sociales.\nTu trabajo es crear ganchos (hooks) que detengan el scroll y hagan que las personas vean el video completo, especialmente en el nicho de entrenamiento físico, calistenia, rutinas y transformación corporal.\n\n🎯 TU MISIÓN\n\nGenerar 10 ganchos diferentes para un video de calistenia o fitness, basándote en el tema proporcionado por el usuario.\n\n💡 QUÉ ES UN GANCHO EFECTIVO\n\nUn gancho es la primera frase o elemento visual que captura la atención en los primeros 3 segundos. Debe:\n\n✅ Detener el scroll inmediatamente\n✅ Generar curiosidad o emoción\n✅ Prometer valor específico o transformación\n✅ Ser claro y directo\n✅ Conectar con el espectador a nivel físico o emocional\n\n📂 CATEGORÍAS DE GANCHOS\n\nDebes generar 2 ganchos por cada una de estas 5 categorías:\n\n1. GANCHOS DE RESULTADO\n\nPresentan un cambio físico o logro visible\n\nIncluyen números, métricas o tiempos\n\nEjemplo: \"Logré mi primera dominada en solo 21 días sin ir al gym\"\n\n2. GANCHOS DE PROBLEMA\n\nIdentifican un error o frustración común al entrenar\n\nHacen que el espectador se sienta comprendido\n\nEjemplo: \"¿Entrenas todos los días y no ves resultados?\"\n\n3. GANCHOS DE CURIOSIDAD\n\nPlantean algo inesperado, contraintuitivo o visual\n\nCrean un “vacío de información” que el espectador quiere llenar\n\nEjemplo: \"Nadie te cuenta esto sobre las flexiones… pero cambia todo\"\n\n4. GANCHOS DE AUTORIDAD\n\nMencionan experiencia, número de alumnos, progresos o reputación\n\nAprovechan el principio de prueba social o expertise\n\nEjemplo: \"He entrenado a más de 300 personas y todos cometen este error\"\n\n5. GANCHOS DE URGENCIA/MIEDO\n\nAdvierten sobre errores, estancamientos o pérdidas\n\nCrean una sensación de riesgo o pérdida si no actúan\n\nEjemplo: \"Si haces esto en calistenia, podrías lastimarte sin darte cuenta\"\n\n✍️ PRINCIPIOS DE ESCRITURA\n\n✅ Brevedad: 8-15 palabras máximo\n✅ Especificidad: métricas, ejercicios, resultados\n✅ Lenguaje simple y directo\n✅ Beneficio o dolor claro\n✅ Emoción: deseo, frustración, miedo, sorpresa\n\n❌ Evita:\n\nGanchos genéricos sin contexto\n\nPromesas irreales\n\nFrases largas o técnicas\n\nLenguaje robótico o aburrido\n\nGanchos que revelen todo el contenido\n\n🧾 FORMATO DE OUTPUT JSON\n{\n  \"tema_video\": \"Descripción del tema del video\",\n  \"target_audiencia\": \"Audiencia objetivo identificada\",\n  \"ganchos\": [\n    {\n      \"id\": 1,\n      \"categoria\": \"Resultado\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Breve explicación de por qué este gancho es efectivo\",\n      \"mejor_plataforma\": \"YouTube/TikTok/Instagram\"\n    },\n    {\n      \"id\": 2,\n      \"categoria\": \"Resultado\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 3,\n      \"categoria\": \"Problema\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 4,\n      \"categoria\": \"Problema\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 5,\n      \"categoria\": \"Curiosidad\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 6,\n      \"categoria\": \"Curiosidad\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 7,\n      \"categoria\": \"Autoridad\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 8,\n      \"categoria\": \"Autoridad\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 9,\n      \"categoria\": \"Urgencia/Miedo\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    },\n    {\n      \"id\": 10,\n      \"categoria\": \"Urgencia/Miedo\",\n      \"texto\": \"Texto del gancho aquí\",\n      \"por_que_funciona\": \"Explicación\",\n      \"mejor_plataforma\": \"Plataforma recomendada\"\n    }\n  ],\n  \"top_3_recomendados\": [\n    {\n      \"gancho_id\": 1,\n      \"razon\": \"Por qué este es uno de los 3 mejores para este tema\"\n    },\n    {\n      \"gancho_id\": 5,\n      \"razon\": \"Justificación\"\n    },\n    {\n      \"gancho_id\": 8,\n      \"razon\": \"Justificación\"\n    }\n  ],\n  \"tips_personalizacion\": [\n    \"Adapta los números según tu progreso o resultados reales\",\n    \"Para principiantes, usa ganchos de Problema y Resultado\",\n    \"Para público intermedio, enfócate en Curiosidad y Urgencia\",\n    \"Acompaña cada gancho con una toma visual potente (flexión, cambio físico)\",\n    \"Testea diferentes hooks en shorts y analiza la tasa de retención\"\n  ]\n}",
+              "role": "system"
+            },
+            {
+              "content": "=Titulo: {{ $json.titulo }}\nSubitutlo: {{ $json.subtitulo }}\nGancho Sugerido: {{ $json.gancho_sugerido }}\nProblema que resuelve: {{ $json.problema_que_resuelve }}\n\nInvestigacion: {{ $('INTERNET1').item.json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1376,
+        1472
+      ],
+      "id": "8e6dd01c-8fcb-4484-be95-a956f9c7eac0",
+      "name": "GANCHOS1",
+      "credentials": {
+        "openAiApi": {
+          "id": "H3NJkebJpTWpHleQ",
+          "name": "Presentacione"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=🎬 GENERADOR DE PROMPTS DE IMÁGENES PARA VIDEOS (ESTILO REALISTA CINEMÁTICO)\nCONTEXTO\n\nEres un especialista en generar prompts de imágenes que convierten guiones de video en secuencias visuales realistas y cinematográficas.\nTu trabajo es analizar el guion completo y crear 10 prompts específicos para generar imágenes estilo realista, inspiracional, tipo campaña visual moderna que acompañen las diferentes escenas del video.\n\n🎨 ESTILO VISUAL REQUERIDO\n\nTodas las imágenes deben seguir este estilo base específico:\n\nrealistic cinematic photography showing [descripción específica de la escena], ultra-detailed lighting, sharp focus, natural skin textures, balanced color grading, shallow depth of field, professional lens blur, 8K resolution, warm natural tones, realistic muscle definition, cinematic backlight, volumetric lighting, HDR detail, no text\n\nCARACTERÍSTICAS DEL ESTILO (BASADO EN REFERENCIA)\nIluminación y Color:\n\nIluminación natural (amanecer, golden hour o tonos cálidos de interior)\n\nColores realistas y equilibrados, con contraste suave\n\nTonos de piel auténticos, variando por tipo de persona\n\nUso de luz lateral o contraluz para dramatismo\n\nFondo ligeramente desenfocado (bokeh natural)\n\nPersonajes:\n\nPersonas reales (jóvenes, adultos, deportistas)\n\nProporciones anatómicas correctas\n\nExpresiones auténticas (esfuerzo, logro, calma, frustración)\n\nPiel con textura real (sudor, luz, detalles naturales)\n\nRopa deportiva moderna (no caricaturesca)\n\nComposición:\n\nPerspectiva natural o cinematográfica (ángulo bajo, medio o contrapicado)\n\nEnfoque principal claro (rostro o acción física)\n\nElementos en movimiento o suspendidos (sudor, polvo, pelo, cuerda, barra)\n\nComposición dinámica que comunique energía o emoción\n\nSombreado y Textura:\n\nSombras naturales y suaves\n\nTexturas visibles en piel, ropa y entorno\n\nContraste leve en zonas de luz y sombra\n\nEfecto de profundidad real (no plano ni ilustrativo)\n\nSin texto visible:\n\nNo incluir texto, logos ni subtítulos\n\nNúmeros o íconos solo si están en objetos reales (ej: reloj, máquina)\n\nROL Y OBJETIVO\n\nGenerar 10 prompts de imágenes realistas que:\n\nRepresenten visualmente los momentos clave del guion\n\nTransmitan emoción y acción real\n\nSean cinematográficos, coherentes y potentes visualmente\n\nApoyen la narrativa y el ritmo emocional del video\n\nESTRUCTURA VISUAL DE ESCENAS\nIMAGEN 1: GANCHO VISUAL (0–3 seg)\n\nObjetivo: Capturar atención inmediata\nEjemplo: Persona en esfuerzo extremo durante una dominada, con gotas de sudor y fondo urbano desenfocado, luz cálida entrando desde el lado.\n\nIMAGEN 2: CONTEXTO/PROBLEMA (3–10 seg)\n\nObjetivo: Mostrar frustración o punto de inicio\nEjemplo: Deportista mirando su reflejo, frustrado, luz tenue, sombras profundas, sensación de lucha interna.\n\nIMAGEN 3: PRESENTACIÓN DEL CREADOR (10–15 seg)\n\nObjetivo: Mostrar autenticidad y confianza\nEjemplo: Entrenador hablando a cámara con fondo de parque, luz dorada, expresión tranquila y cercana.\n\nIMAGEN 4: INTRODUCCIÓN DE SOLUCIÓN (15–20 seg)\n\nObjetivo: Transición de problema a acción\nEjemplo: Persona atando sus zapatillas, con determinación, fondo iluminado, aire de “nuevo comienzo”.\n\nIMAGEN 5: DEMOSTRACIÓN PARTE 1 (20–30 seg)\n\nObjetivo: Mostrar inicio del proceso\nEjemplo: Primer plano de manos agarrando la barra, tensión muscular visible, luz lateral, textura real de la piel.\n\nIMAGEN 6: DEMOSTRACIÓN PARTE 2 (30–40 seg)\n\nObjetivo: Mostrar ejecución con movimiento\nEjemplo: Persona en mitad de una dominada, músculos contraídos, cámara lenta, partículas de polvo flotando.\n\nIMAGEN 7: DEMOSTRACIÓN PARTE 3 (40–50 seg)\n\nObjetivo: Mostrar progreso o resultado visible\nEjemplo: Serie de repeticiones completas, rostro concentrado, gotas de sudor brillando con la luz.\n\nIMAGEN 8: BENEFICIOS/IMPACTO (50–60 seg)\n\nObjetivo: Mostrar cambio físico o emocional\nEjemplo: Persona sonriendo tras el entrenamiento, respirando profundo, fondo con atardecer, tonos cálidos.\n\nIMAGEN 9: CASOS DE USO/APLICACIONES (60–70 seg)\n\nObjetivo: Mostrar variedad de personas o contextos\nEjemplo: Grupo de atletas entrenando juntos, diversidad física y de edades, ambiente positivo.\n\nIMAGEN 10: LLAMADO A LA ACCIÓN (70–80+ seg)\n\nObjetivo: Inspirar acción y comunidad\nEjemplo: Persona mirando hacia el horizonte, mochila al hombro, luz de amanecer, energía de propósito.\n\nFORMATO DE OUTPUT JSON\n{\n  \"titulo_video\": \"Título del video del guion\",\n  \"tema_principal\": \"Tema principal extraído del guion\",\n  \"estilo_visual\": \"realistic cinematic photography\",\n\n  \"imagenes\": [\n    {\n      \"id\": 1,\n      \"seccion_guion\": \"Gancho (0-3 seg)\",\n      \"proposito\": \"Capturar atención con resultado/problema impactante\",\n      \"prompt_completo\": \"realistic cinematic photography showing [descripción específica de la escena], ultra-detailed lighting, natural muscle texture, soft cinematic depth of field, golden hour lighting, realistic sweat detail, high dynamic range, 8K resolution, no text\",\n      \"elementos_clave\": [\"Acción principal\", \"Emoción visible\", \"Entorno realista\"],\n      \"color_sugerido_fondo\": \"Tonos cálidos (naranja, dorado)\"\n    },\n    {\n      \"id\": 2,\n      \"seccion_guion\": \"Contexto/Problema (3-10 seg)\",\n      \"proposito\": \"Mostrar frustración o inicio del reto\",\n      \"prompt_completo\": \"realistic cinematic photo of [persona mostrando frustración o cansancio], sombras intensas, fondo urbano o de gimnasio desenfocado, contraste suave, piel con textura natural, 8K high resolution, no text\",\n      \"elementos_clave\": [\"Emoción negativa\", \"Entorno cotidiano\", \"Detalles reales\"],\n      \"color_sugerido_fondo\": \"Tonos fríos (gris, azul)\"\n    },\n    {\n      \"id\": 3,\n      \"seccion_guion\": \"Presentación (10-15 seg)\",\n      \"proposito\": \"Mostrar autenticidad del creador\",\n      \"prompt_completo\": \"cinematic portrait of [entrenador o creador fitness hablando a cámara], fondo natural con luz dorada, expresión amigable, enfoque en rostro, profundidad realista, HDR details, 8K high resolution, no text\",\n      \"elementos_clave\": [\"Creador visible\", \"Entorno cálido\", \"Confianza visual\"],\n      \"color_sugerido_fondo\": \"Tonos neutros cálidos\"\n    },\n    {\n      \"id\": 4,\n      \"seccion_guion\": \"Solución Introducida (15-20 seg)\",\n      \"proposito\": \"Mostrar inicio del cambio o acción\",\n      \"prompt_completo\": \"realistic photo of [persona atando zapatillas o preparándose para entrenar], luz natural suave, expresión de determinación, textura real de ropa y suelo, 8K resolution, cinematic color grading, no text\",\n      \"elementos_clave\": [\"Preparación\", \"Determinación\", \"Acción previa\"],\n      \"color_sugerido_fondo\": \"Luz neutra con tonos cálidos\"\n    },\n    {\n      \"id\": 5,\n      \"seccion_guion\": \"Demostración Paso 1 (20-30 seg)\",\n      \"proposito\": \"Mostrar inicio del proceso físico\",\n      \"prompt_completo\": \"ultra-realistic close-up of hands gripping metal bar, visible sweat drops, high contrast lighting, cinematic macro lens detail, blurred background, no text\",\n      \"elementos_clave\": [\"Manos\", \"Esfuerzo\", \"Textura metálica\"],\n      \"color_sugerido_fondo\": \"Oscuro con reflejos metálicos\"\n    },\n    {\n      \"id\": 6,\n      \"seccion_guion\": \"Demostración Paso 2 (30-40 seg)\",\n      \"proposito\": \"Mostrar ejecución con movimiento\",\n      \"prompt_completo\": \"realistic cinematic photo of [persona en medio de dominada], músculos tensos, polvo en el aire, luz lateral, movimiento capturado con nitidez, 8K resolution, no text\",\n      \"elementos_clave\": [\"Movimiento\", \"Esfuerzo\", \"Energía\"],\n      \"color_sugerido_fondo\": \"Tonos cálidos medios\"\n    },\n    {\n      \"id\": 7,\n      \"seccion_guion\": \"Demostración Resultado (40-50 seg)\",\n      \"proposito\": \"Mostrar progreso visible\",\n      \"prompt_completo\": \"realistic cinematic photo of [persona completando dominada o ejercicio], expresión concentrada, gotas de sudor brillando, fondo natural desenfocado, cinematic lens flare, 8K resolution, no text\",\n      \"elementos_clave\": [\"Resultado\", \"Satisfacción\", \"Luz natural\"],\n      \"color_sugerido_fondo\": \"Golden hour tones\"\n    },\n    {\n      \"id\": 8,\n      \"seccion_guion\": \"Beneficios/Impacto (50-60 seg)\",\n      \"proposito\": \"Mostrar cambio físico y emocional\",\n      \"prompt_completo\": \"cinematic photography of [persona relajada post entrenamiento], respirando profundo, luz de atardecer, fondo natural, colores cálidos, HDR detail, 8K resolution, no text\",\n      \"elementos_clave\": [\"Relajación\", \"Energía positiva\", \"Luz suave\"],\n      \"color_sugerido_fondo\": \"Tonos dorados\"\n    },\n    {\n      \"id\": 9,\n      \"seccion_guion\": \"Casos de Uso (60-70 seg)\",\n      \"proposito\": \"Mostrar variedad de personas entrenando\",\n      \"prompt_completo\": \"realistic cinematic photography of [grupo diverso de personas entrenando juntos], distintas edades y físicos, ambiente positivo, luz natural, composición amplia, 8K high resolution, no text\",\n      \"elementos_clave\": [\"Diversidad\", \"Unidad\", \"Acción\"],\n      \"color_sugerido_fondo\": \"Cálido con toques verdes\"\n    },\n    {\n      \"id\": 10,\n      \"seccion_guion\": \"Llamado a la Acción (70-80+ seg)\",\n      \"proposito\": \"Inspirar acción o comunidad\",\n      \"prompt_completo\": \"cinematic photography of [persona mirando el horizonte al amanecer], luz de fondo cálida, atmósfera inspiracional, profundidad cinematográfica, 8K high resolution, no text\",\n      \"elementos_clave\": [\"Inspiración\", \"Propósito\", \"Esperanza\"],\n      \"color_sugerido_fondo\": \"Amanecer naranja-dorado\"\n    }\n  ],\n\n  \"notas_coherencia\": {\n    \"personaje_principal\": \"Persona atlética joven, tono de piel natural, ropa deportiva moderna, cabello corto o recogido\",\n    \"paleta_colores\": [\"Cálido dorado\", \"Azul profundo\", \"Gris neutro\"],\n    \"elementos_recurrentes\": [\"Sudor brillante\", \"Luz natural lateral\", \"Entornos urbanos naturales\"],\n    \"estilo_iconografia\": \"Elementos visuales realistas, sin íconos ni símbolos artificiales\"\n  },\n\n  \"recomendaciones_produccion\": {\n    \"transiciones_sugeridas\": \"Usar crossfade o cámara lenta entre escenas para mantener continuidad emocional\",\n    \"momentos_enfasis\": [\"Imagen 1 y 7 destacan visualmente la energía y el logro\"],\n    \"animaciones_complementarias\": [\"Añadir partículas de polvo o vapor de respiración para realismo\"]\n  }\n}\n\n\n\nAsegurate que las imagenes cumplan con las politicas, no hagas gente sin ropa o algo que no sea permitido",
+              "role": "system"
+            },
+            {
+              "content": "=Titulo: {{ $json.titulo }}\nSubitutlo: {{ $json.subtitulo }}\nGancho Sugerido: {{ $json.gancho_sugerido }}\nProblema que resuelve: {{ $json.problema_que_resuelve }}\n"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1392,
+        1664
+      ],
+      "id": "45f0502f-96b8-4885-8264-153860f4f57c",
+      "name": "IMAGENES1",
+      "credentials": {
+        "openAiApi": {
+          "id": "H3NJkebJpTWpHleQ",
+          "name": "Presentacione"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get many database pages1').item.json.url }}",
+          "mode": "url"
+        },
+        "title": "={{ $('Loop Over Items1').item.json.titulo }}",
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "Gancho",
+                    "annotationUi": {
+                      "bold": true,
+                      "underline": true,
+                      "color": "blue"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.desglose_por_secciones.gancho_3_5_seg }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "Presentacion",
+                    "annotationUi": {
+                      "bold": true,
+                      "color": "green"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.desglose_por_secciones.presentacion_5_8_seg }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "Contenido",
+                    "annotationUi": {
+                      "color": "orange"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.desglose_por_secciones.contenido_30_45_seg }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "Información Clave",
+                    "annotationUi": {
+                      "bold": true,
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.desglose_por_secciones.informacion_clave_8_12_seg }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "CTA",
+                    "annotationUi": {
+                      "color": "blue"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.desglose_por_secciones.cta_5_8_seg }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1696,
+        1088
+      ],
+      "id": "43c4ff8a-c5a3-4bef-bb08-cce30f5babf5",
+      "name": "Create a page1",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get many database pages1').item.json.url }}",
+          "mode": "url"
+        },
+        "title": "=🧠 Youtube - {{ $('Loop Over Items1').item.json.titulo }}",
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=1 - {{ $json.message.content.intros[0].tipo }}",
+                    "annotationUi": {
+                      "bold": true,
+                      "color": "orange"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.intros[0].introduccion }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=2 - {{ $json.message.content.intros[1].tipo }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.intros[1].introduccion }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=3 - {{ $json.message.content.intros[2].tipo }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.intros[2].introduccion }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=4 - {{ $json.message.content.intros[3].tipo }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.intros[3].introduccion }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=5 - {{ $json.message.content.intros[4].tipo }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.intros[4].introduccion }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1712,
+        1280
+      ],
+      "id": "a74da8d2-55ec-46cb-9037-e3dfcf215064",
+      "name": "Create a page9",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get many database pages1').item.json.url }}",
+          "mode": "url"
+        },
+        "title": "=🎣 Ganchos - {{ $json.message.content.tema_video }}",
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=1 - {{ $json.message.content.ganchos[0].categoria }}",
+                    "annotationUi": {
+                      "bold": true,
+                      "color": "orange"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[0].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=2 - {{ $json.message.content.ganchos[1].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[1].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=3 - {{ $json.message.content.ganchos[2].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[3].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=4 - {{ $json.message.content.ganchos[3].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[3].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=5 - {{ $json.message.content.ganchos[4].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[4].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=6 - {{ $json.message.content.ganchos[5].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[5].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=7 - {{ $json.message.content.ganchos[6].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[6].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=8 - {{ $json.message.content.ganchos[7].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[7].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=9 - {{ $json.message.content.ganchos[8].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[8].texto }}"
+            },
+            {
+              "type": "heading_2",
+              "richText": true,
+              "text": {
+                "text": [
+                  {
+                    "text": "=10 - {{ $json.message.content.ganchos[9].categoria }}",
+                    "annotationUi": {
+                      "color": "yellow"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "textContent": "={{ $json.message.content.ganchos[9].texto }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1712,
+        1472
+      ],
+      "id": "ff421698-7f10-4817-ad28-9f925028143f",
+      "name": "Create a page10",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message.content.imagenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1664,
+        1664
+      ],
+      "id": "97bd826e-4d3f-4fc4-8239-eaf004b30d7c",
+      "name": "Split Out3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.replicate.com/v1/models/minimax/image-01/predictions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "wait"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n\t\"input\": {\n      \"prompt\": \"{{ $json.prompt_completo }}\",\n      \"aspect_ratio\": \"1:1\"\n\t}\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1792,
+        1664
+      ],
+      "id": "a5d11d40-def6-4826-a5b5-5420bbb5687b",
+      "name": "HTTP Request1",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "egKhDaTp9JjocLcD",
+          "name": "REPLICATEIMAGENES"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "url"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2688,
+        1584
+      ],
+      "id": "abe8cad1-c480-4fa9-8e5e-70db80e5e4dc",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get many database pages1').item.json.url }}",
+          "mode": "url"
+        },
+        "title": "=MULTIMEDIA",
+        "blockUi": {
+          "blockValues": [
+            {
+              "type": "image",
+              "url": "={{ $json.url[0] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[1] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[2] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[3] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[4] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[5] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[6] }}"
+            },
+            {
+              "type": "image",
+              "url": "={{ $json.url[7] }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        2848,
+        1584
+      ],
+      "id": "ba116467-f0bf-4316-b577-634381fc0ae7",
+      "name": "Create a page11",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2848,
+        1328
+      ],
+      "id": "e83d02df-7a3e-43bd-9a7d-c3d017b3576c",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        3088,
+        1360
+      ],
+      "id": "4a5c0b97-a9e8-472b-b5b6-f2e4b21da3cd",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('Get many database pages1').item.json.url }}",
+          "mode": "url"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "Seleccionar|select",
+              "selectValue": "Generado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        3104,
+        1664
+      ],
+      "id": "8a82339d-7cc8-4adc-9927-daedfa4f1596",
+      "name": "Update a database page1",
+      "credentials": {
+        "notionApi": {
+          "id": "Jeyq6BhgXskGypIp",
+          "name": "N8N"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "messages": {
+          "message": [
+            {
+              "content": "=# INVESTIGADOR\n\n🏋️ AGENTE DE INVESTIGACIÓN CON PERPLEXITY PARA CONTENIDO DE FITNESS Y CALISTENIA\n\n## CONTEXTO\n\nEres un investigador especializado en el sector de **fitness y calistenia** que utiliza Perplexity para recopilar información profunda, actual y verificable sobre tendencias, rutinas, herramientas, nutrición, automatización de entrenamiento y metodologías de progresión física.\nTu investigación servirá para crear videos y guías prácticas para la comunidad de **Horizontes IA** sobre cómo optimizar el entrenamiento físico utilizando conocimiento basado en evidencia, tecnología y experiencias reales.\n\n## OBJETIVO PRINCIPAL\n\nOfrecer análisis precisos, ejemplos reales y datos verificables sobre innovación, rendimiento, planificación de rutinas y oportunidades de mejora en calistenia y fitness, evitando información genérica o repetitiva.\n\n## IDENTIDAD DEL PROYECTO\n\n**Canal:** Horizontes IA (Santiago / Emilio)\n**Audiencia:** Emprendedores fitness, entrenadores, principiantes avanzando, creadores de contenido físico\n**Enfoque:** Práctico, rentable, con datos reales\n**Plataformas:** YouTube, TikTok, Instagram Reels\n\n## ROL Y RESPONSABILIDADES\n\nTu investigación debe incluir:\n\n### 1. DATOS Y TENDENCIAS\n\n* Tendencias globales en fitness y entrenamiento corporal\n* Avances en herramientas digitales para calistenia (apps, sensores, IA)\n* Nuevas metodologías de progresión y entrenamiento funcional\n* Estadísticas de adherencia y resultados en entrenamientos sin pesas\n* Cambios en comportamiento de usuarios post-pandemia\n\n### 2. CASOS DE USO REALES\n\n* Startups fitness o apps que aplican IA o gamificación\n* Influencers o entrenadores que aplican metodologías novedosas\n* Modelos de negocio fitness exitosos (online coaching, retos grupales, plataformas de suscripción)\n* Ejemplos reales de transformación física y progresión calisténica\n\n### 3. INFORMACIÓN PRÁCTICA\n\n* Cómo estructurar una rutina según nivel (principiante a avanzado)\n* Comparativas de apps de entrenamiento, seguimiento o nutrición\n* Herramientas para análisis de progreso (form checkers, diarios digitales)\n* Recursos para crear un plan de contenido fitness\n\n### 4. CONTEXTO DE MERCADO\n\n* Dispositivos o plataformas más utilizadas por entusiastas de calistenia\n* Comportamiento de consumo de contenido fitness\n* Cambios en percepción sobre entrenamiento con peso corporal\n* Oportunidades emergentes (entrenamiento híbrido, clases virtuales, entrenadores IA)\n\n### 5. OBJECIONES Y RIESGOS\n\n* Riesgos por falta de supervisión o técnica incorrecta\n* Mitos comunes en calistenia sin respaldo científico\n* Saturación de ciertos tipos de contenido\n* Limitaciones del entrenamiento sin equipo en ciertos objetivos\n\n---\n\n## ESTRUCTURA DE LA INVESTIGACIÓN\n\n### 🧭 FASE 1: CONTEXTO GENERAL\n\n**Objetivo:** Entender el panorama actual del tema fitness/calistenia investigado.\n**Buscar:**\n\n* Descripción general del tema\n* Principales actores, apps y enfoques metodológicos\n* Estadísticas de mercado (2024–2025)\n* Tendencias de entrenamiento y herramientas digitales\n* Regulaciones o recomendaciones de instituciones deportivas\n\n---\n\n### 🔍 FASE 2: PROFUNDIZACIÓN\n\n**Objetivo:** Responder preguntas específicas del contenido o idea de video.\n**Buscar:**\n\n* Datos precisos con fuentes verificables\n* Comparaciones entre rutinas, métodos o herramientas\n* Ejemplos concretos de resultados reales\n* Opiniones de expertos, entrenadores o fisioterapeutas\n\n---\n\n### 🧠 FASE 3: IMPLEMENTACIÓN PRÁCTICA\n\n**Objetivo:** Ofrecer información accionable para entrenadores, creadores de contenido y entusiastas.\n**Buscar:**\n\n* Cómo aplicar lo investigado paso a paso\n* Herramientas recomendadas\n* Casos reales de implementación\n* Costos y tiempos estimados para progresar\n\n---\n\n### 🧩 FASE 4: DIFERENCIACIÓN DE CONTENIDO\n\n**Objetivo:** Detectar oportunidades de contenido único para Horizontes IA.\n**Buscar:**\n\n* Qué temas fitness están saturados\n* Qué preguntas no se han respondido aún\n* Enfoques visuales o prácticos poco explorados\n* Nichos con potencial (calistenia para adultos mayores, entrenadores online, calistenia mental)\n\n---\n\n## FORMATO DE OUTPUT (MARKDOWN)\n\nTu resultado debe presentarse en formato Markdown estructurado, siguiendo este esquema:\n\n```markdown\n🧾 Tema Investigado: [Tema o idea principal]  \nFecha: [AAAA-MM-DD]\n\n🏋️ Resumen Ejecutivo\n\nDescripción general:  \nBreve explicación del tema en 2–3 párrafos.\n\nRelevancia actual:  \nPor qué este tema es importante en el mundo del fitness/calistenia hoy.\n\nHallazgos clave:\n\n- Punto 1  \n- Punto 2  \n- Punto 3  \n\nNivel de adopción: Emergente / Creciente / Establecido / Maduro  \nAccesibilidad: Accesible / Requiere inversión / Complejo\n\n💡 Datos Técnicos y Contextuales\n\nCómo funciona:  \nExplicación simplificada pero técnica.\n\nHerramientas o plataformas relevantes:\n\n- Herramienta 1 – función principal  \n- Herramienta 2 – función principal\n\nRequisitos o costos técnicos:\n\n- Requisito 1  \n- Requisito 2\n\nLimitaciones o riesgos:\n\n- Riesgo 1  \n- Riesgo 2\n\n📈 Estadísticas de Mercado\n\nTamaño de mercado: [Dato con fuente]  \nTasa de crecimiento: [Porcentaje anual]  \nPorcentaje de adopción tecnológica: [Dato]  \nTendencias clave:\n\n- Tendencia 1  \n- Tendencia 2  \n\nProyecciones:  \nBreve texto sobre el futuro del tema.\n\n🏢 Casos Reales y Ejemplos\n\nEjemplo 1:\n\n- Empresa / Proyecto:  \n- Ubicación:  \n- Problema:  \n- Solución aplicada:  \n- Resultado medible:  \n- Fuente:  \n\nEjemplo 2:  \n(repetir formato)\n\n⚖️ Comparativas y Alternativas\n\nHerramienta / Enfoque:  \nVentajas, desventajas y precios aproximados.\n\n| Herramienta | Ventajas | Desventajas | Precio Estimado | Ideal Para |\n|-------------|----------|-------------|------------------|------------|\n| Tool 1      | ...      | ...         | ...              | ...        |\n| Tool 2      | ...      | ...         | ...              | ...        |\n\n🧰 Guía de Implementación\n\nPasos Recomendados:\n\n- Paso 1  \n- Paso 2  \n- Paso 3  \n\nHerramientas Necesarias:\n\n- Herramienta 1 (para X)  \n- Herramienta 2 (para Y)\n\nErrores Comunes:\n\n- Error y solución breve  \n\n📊 Recomendaciones para Contenido\n\nÁngulo sugerido:  \nIdea única para el video o artículo.\n\nDatos destacados:\n\n- Dato clave 1  \n- Dato clave 2  \n\nEjemplos visuales sugeridos:\n\n- Idea visual 1  \n- Idea visual 2  \n\nTemas a evitar:\n\n- Tópico obsoleto o incorrecto\n\n📚 Fuentes\n\n- Título del artículo o reporte — Fuente / Fecha  \n- Título del estudio o informe — Fuente / Fecha\n\n🧩 Notas del Investigador\n\nCalidad de la información: Alta / Media / Baja  \nConfiabilidad de las fuentes: Alta / Media / Baja  \nVacíos de información: (si existen)  \nObservaciones adicionales: (comentarios o próximos pasos)\n```\n\n---\n\n## ✅ CHECKLIST DE CALIDAD\n\n* ✅ Datos verificados y actualizados\n* ✅ Casos reales y ejemplos específicos\n* ✅ Fuentes citadas con URLs\n* ✅ Perspectiva práctica y aplicable\n* ✅ Identificación de oportunidades de contenido\n",
+              "role": "system"
+            },
+            {
+              "content": "=Tema: {{ $json.tema }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexity",
+      "typeVersion": 1,
+      "position": [
+        1696,
+        880
+      ],
+      "id": "a8d4cf56-4491-4fe3-9b83-92182580f733",
+      "name": "INTERNET1",
+      "credentials": {
+        "perplexityApi": {
+          "id": "Hi2JwqIXgimQPT3f",
+          "name": "Perplexity account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-cloudinary.cloudinary",
+      "typeVersion": 1,
+      "position": [
+        2512,
+        1584
+      ],
+      "id": "51228795-9daa-45b3-acb4-32c82f0f29ac",
+      "name": "Upload an asset from URL1",
+      "credentials": {
+        "cloudinaryApi": {
+          "id": "MK4KtgUhVtxkhuZt",
+          "name": "Cloudinary account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "=https://api.replicate.com/v1/predictions/{{ $json.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1968,
+        1664
+      ],
+      "id": "57f9635c-00ba-4916-a3a3-651b2bdeed8b",
+      "name": "HTTP Request4",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "egKhDaTp9JjocLcD",
+          "name": "REPLICATEIMAGENES"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "025372ab-4974-4708-a817-a7d8bce0cb3a",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "succeeded",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2112,
+        1664
+      ],
+      "id": "e9d1887c-98d8-4883-82b7-88c67d510aad",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2400,
+        1728
+      ],
+      "id": "b4f3301c-55ea-45c8-811d-c2061c0c02e9",
+      "name": "Wait1",
+      "webhookId": "16f91711-8105-4af2-be8d-fb1706460c7c"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "67753a80-c495-4735-aad3-9ce8d2a2135f",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        2288,
+        1584
+      ],
+      "id": "53314f08-fc2b-4e34-bc9e-846325fe5240",
+      "name": "Filter1"
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger1": [
+      {
+        "json": {
+          "timestamp": "2025-11-10T17:09:55.277-05:00",
+          "Readable date": "November 10th 2025, 5:09:55 pm",
+          "Readable time": "5:09:55 pm",
+          "Day of week": "Monday",
+          "Year": "2025",
+          "Month": "November",
+          "Day of month": "10",
+          "Hour": "17",
+          "Minute": "09",
+          "Second": "55",
+          "Timezone": "America/New_York (UTC-05:00)"
+        }
+      }
+    ],
+    "Get many database pages1": [
+      {
+        "json": {
+          "id": "2a7d1c4a-53a3-80e0-b8e5-f2011c0e1375",
+          "name": "Cómo hacer tu primera dominada sin gimnasio",
+          "url": "https://www.notion.so/C-mo-hacer-tu-primera-dominada-sin-gimnasio-2a7d1c4a53a380e0b8e5f2011c0e1375",
+          "property_tipo": "Tutorial",
+          "property_": 3,
+          "property_nivel": "Principiante",
+          "property_potencial_viral": 8,
+          "property_duraci_n": "60-90 seg",
+          "property_seleccionar": "Generar",
+          "property_keywords": "['dominada', 'sin gimnasio', 'calistenia']",
+          "property_t_tulo_del_video": "Cómo hacer tu primera dominada sin gimnasio"
+        }
+      }
+    ],
+    "Edit Fields1": [
+      {
+        "json": {
+          "url": "https://www.notion.so/C-mo-hacer-tu-primera-dominada-sin-gimnasio-2a7d1c4a53a380e0b8e5f2011c0e1375",
+          "tema": "Cómo hacer tu primera dominada sin gimnasio"
+        }
+      }
+    ],
+    "INTERNET1": [
+      {
+        "json": {
+          "id": "38c19bf4-ff5b-4fdc-81a3-2d9279dbee80",
+          "model": "sonar",
+          "created": 1762812635,
+          "usage": {
+            "prompt_tokens": 1965,
+            "completion_tokens": 2344,
+            "total_tokens": 4309,
+            "search_context_size": "low",
+            "cost": {
+              "input_tokens_cost": 0.002,
+              "output_tokens_cost": 0.002,
+              "request_cost": 0.005,
+              "total_cost": 0.009
+            }
+          },
+          "citations": [
+            "https://www.youtube.com/watch?v=SJYxLvg0dkA",
+            "https://www.solostreetworkout.com/empezar-hacer-dominadas/",
+            "https://www.youtube.com/watch?v=M7cBPfhbfSY",
+            "https://www.vitonica.com/entrenamiento/estos-ejercicios-que-te-ayudaran-a-conseguir-tu-primera-dominada",
+            "https://www.menshealth.com/es/fitness/a33946709/primera-dominada-tres-pasos/",
+            "https://www.youtube.com/watch?v=gAo5cNasPfg",
+            "https://www.youtube.com/watch?v=iUmgLohLZVc",
+            "https://www.youtube.com/watch?v=CDtUsM5XIrU"
+          ],
+          "search_results": [
+            {
+              "title": "💪 Consigue tu primera DOMINADA con esta Rutina",
+              "url": "https://www.youtube.com/watch?v=SJYxLvg0dkA",
+              "date": "2024-01-21",
+              "last_updated": "2025-07-02",
+              "snippet": "La mejor rutina de ejercicios para conseguir tu primera dominada. Entrena con el Pack Cimientos (Progresar sin lesiones) Domina la ...",
+              "source": "web"
+            },
+            {
+              "title": "Cómo hacer dominadas en tan sólo 5 pasos | SSW",
+              "url": "https://www.solostreetworkout.com/empezar-hacer-dominadas/",
+              "date": "2024-12-01",
+              "last_updated": "2025-08-18",
+              "snippet": "La técnica es sencilla: te cuelgas de la barra o anillas (lo que prefieras), con la barbilla por encima, y tratas de bajar lo más lento posible. Con este ...",
+              "source": "web"
+            },
+            {
+              "title": "Ejercicios para pasar de 0 a 5 repeticiones (En poco tiempo)",
+              "url": "https://www.youtube.com/watch?v=M7cBPfhbfSY",
+              "date": "2024-01-18",
+              "last_updated": "2025-07-11",
+              "snippet": "Cómo Hacer Tu Primera Dominada | Ejercicios para pasar de 0 a 5 repeticiones (En poco tiempo) · Comments.",
+              "source": "web"
+            },
+            {
+              "title": "Cómo hacer dominadas: ejercicios para ...",
+              "url": "https://www.vitonica.com/entrenamiento/estos-ejercicios-que-te-ayudaran-a-conseguir-tu-primera-dominada",
+              "date": "2020-11-04",
+              "last_updated": "2025-10-09",
+              "snippet": "Estos son los ejercicios que te ayudarán a conseguir tu primera dominada · Jalones horizontales con mesa · Dominadas escapulares · Dominadas ...",
+              "source": "web"
+            },
+            {
+              "title": "Cómo conseguir tu primera dominada en tres sencillos pasos",
+              "url": "https://www.menshealth.com/es/fitness/a33946709/primera-dominada-tres-pasos/",
+              "date": "2022-09-29",
+              "last_updated": "2025-10-29",
+              "snippet": "Isométrica en el punto más alto. Este ejercicio te ayudará a ganar fuerza y control. Trata de pasar la barbilla por encima de la barra y mantén ...",
+              "source": "web"
+            },
+            {
+              "title": "DOMINADAS EN CASA SIN BARRA",
+              "url": "https://www.youtube.com/watch?v=gAo5cNasPfg",
+              "date": "2015-07-21",
+              "last_updated": "2025-06-30",
+              "snippet": "http://goo.gl/oaU5re Cómo realizar dominadas en casa sin barra, utilizando sólo tu propio peso corporal para desarrollar la espalda (Dorsal, ...",
+              "source": "web"
+            },
+            {
+              "title": "Cómo hacer DOMINADAS para PRINCIPIANTES en CASA ...",
+              "url": "https://www.youtube.com/watch?v=iUmgLohLZVc",
+              "date": "2021-11-24",
+              "last_updated": "2025-09-28",
+              "snippet": "No tienes barra de dominadas en casa? No te preocupes, en este vídeo te enseño 5 ejercicios que puedes hacer en casa para trabajar la misma ...",
+              "source": "web"
+            },
+            {
+              "title": "HAZ TU PRIMERA DOMINADA!! 3 SENCILLOS PASOS ...",
+              "url": "https://www.youtube.com/watch?v=CDtUsM5XIrU",
+              "last_updated": "2025-01-21",
+              "snippet": "¡Muy buenas animales! Muy buenas animales, hoy os traigo un tutorial sobre cómo conseguir vuestra primera pull up o chin up gracias a 3 ...",
+              "source": "web"
+            }
+          ],
+          "object": "chat.completion",
+          "choices": [
+            {
+              "index": 0,
+              "finish_reason": "stop",
+              "message": {
+                "role": "assistant",
+                "content": "```markdown\n🧾 Tema Investigado: Cómo hacer tu primera dominada sin gimnasio  \nFecha: 2025-11-10\n\n🏋️ Resumen Ejecutivo\n\nDescripción general:  \nLa dominada es uno de los ejercicios más completos para trabajar la musculatura de la espalda, brazos y zona core. Hacer la primera dominada suele ser un reto inicial común, especialmente sin acceso a gimnasio o barra. Sin embargo, existen métodos progresivos, alternativos y adaptados para entrenar la fuerza necesaria utilizando peso corporal y elementos caseros o bandas elásticas, sin requerir barra fija.\n\nRelevancia actual:  \nCon el auge del entrenamiento en casa y las rutinas de calistenia, aprender a hacer la primera dominada sin ir a un gimnasio es fundamental para quienes buscan independencia y ahorro económico. Además, la técnica correcta y el entrenamiento progresivo evitan lesiones y logran adherencia al ejercicio básico de tracción.\n\nHallazgos clave:\n\n- La progresión más efectiva inicia con ejercicios de dominadas escapulares, jalones horizontales (remo invertido con mesa o toalla en puerta), y dominadas negativas, que preparan la musculatura y el patrón motor[1][3][4].\n- La asistencia con bandas elásticas es clave para vencer el peso corporal mientras se gana fuerza progresiva en los dorsales y bíceps, permitiendo controlar mejor el rango de movimiento[1][2][5].\n- Se pueden realizar equivalentes en casa sin barra, usando una toalla sobre una puerta para ejecutar remos deslizantes o dominadas invertidas horizontales, muy útiles para fortalecer sin necesidad de barra fija[6][7].\n- Dividir el entrenamiento en al menos tres días semanales mezclando dominadas asistidas, negativas y ejercicios complementarios aumenta la efectividad en el corto plazo[3][5].\n\nNivel de adopción: Creciente  \nAccesibilidad: Accesible (requiere poca inversión y puede hacerse con objetos caseros)\n\n💡 Datos Técnicos y Contextuales\n\nCómo funciona:  \nSe enfoca en desarrollar la fuerza isométrica y excéntrica (fases negativas) de los músculos clave (dorsales, bíceps, trapecios medios e inferiores) y la estabilización del core y escapulas, progresando desde movimientos asistidos o en ángulo hasta dominadas completas de peso corporal.\n\nHerramientas o plataformas relevantes:\n\n- Bandas elásticas – para asistencia ajustable en ejercicios de dominada  \n- Toalla resistente o deslizadores – para remos horizontales en casa sin barra  \n- Barra fija o anillas (si disponible) – para progresión clásica y técnica de dominada  \n\nRequisitos o costos técnicos:\n\n- Espacio adecuado para colgar la banda o la toalla frenando en una puerta firme  \n- Material básico barato: bandas elásticas (10-30 USD aprox), toalla y silla o mesa para soporte  \n- Aprender técnica de retracción escapular y control del movimiento lento  \n\nLimitaciones o riesgos:\n\n- Mala técnica sin supervisión puede provocar lesiones en hombros o cervicales  \n- Progresión apresurada causa fatiga y estancamiento  \n- Sin barra o anillas puede resultar complejo hacer dominadas completas, por lo que se requiere mucha paciencia y constancia  \n\n📈 Estadísticas de Mercado\n\nNo existen datos específicos actualizados sobre dominadas en casa sin barra, pero el fitness en casa y calistenia sigue creciendo con una tasa anual superior a 8% global en adopción tecnológica y apps relacionadas[Contexto general externo]. El uso de bandas elásticas ha aumentado un 35% en ventas post pandemia como herramienta de apoyo.\n\nTendencias clave:\n\n- Incremento de entrenamientos en casa con recursos mínimos  \n- Popularización de metodologías integradoras que combinan fuerza, movilidad y progresión funcional  \n- Influencers y apps que ofrecen rutinas para hacer dominadas sin equipo  \n  \nProyecciones:  \nSe espera que la demanda de soluciones funcionales para hacer dominadas en casa sin gimnasio crezca de la mano de apps con seguimiento progresivo e integración de IA para optimizar técnica y evitar lesiones.\n\n🏢 Casos Reales y Ejemplos\n\nEjemplo 1:\n\n- Empresa / Proyecto: Solo Street Workout  \n- Ubicación: Global (online)  \n- Problema: Aprender dominadas sin acceso a gimnasio  \n- Solución aplicada: Método de progresión con dominadas asistidas con bandas y negativos en 5 pasos detallados  \n- Resultado medible: Mejora comprobada en fuerza y técnica para cumplir primera dominada en semanas  \n- Fuente: [2]\n\nEjemplo 2:\n\n- Empresa / Proyecto: Canal Lara Ibarra (YouTube)  \n- Ubicación: Español, online  \n- Problema: Superar la dificultad para hacer la primera dominada  \n- Solución aplicada: Secuencia de ejercicios prácticos, desde colgarse, dominadas escapulares, remos invertidos, negativos y asistidas con goma  \n- Resultado medible: Usuarios logran entre 4-5 dominadas tras plan estructurado y consejos nutricionales  \n- Fuente: [3]\n\n⚖️ Comparativas y Alternativas\n\n| Herramienta / Método          | Ventajas                              | Desventajas                          | Precio Estimado     | Ideal Para                    |\n|------------------------------|-------------------------------------|------------------------------------|---------------------|------------------------------|\n| Bandas elásticas             | Ajustables, progresivas, fácil uso   | Saltos de resistencia pueden ser bruscos | $10-30 USD          | Principiantes y progresivos   |\n| Remos invertidos con toalla  | Sin barra, usa objetos caseros       | Técnica requiere control y espacio | Gratis (material casero) | Sin barra, entrenamiento en casa |\n| Dominadas negativas          | Incrementa fuerza excéntrica         | Solo fase negativa, requiere paciencia | Gratis              | Desarrollo fuerza inicial      |\n| Dominadas asistidas con polea | Control fino del peso asistido       | Necesita máquina o equipo          | Alto (gimnasio)      | Usuarios con acceso a gimnasio |\n\n🧰 Guía de Implementación\n\nPasos Recomendados:\n\n- Paso 1: Practicar dominadas escapulares y colgarse de barra para activar músculos y acostumbrar al movimiento[4]  \n- Paso 2: Realizar remos horizontales en casa (con mesa o toalla+puerta) para fortalecer dorsales y bíceps[4][6]  \n- Paso 3: Añadir dominadas negativas para trabajar la fase excéntrica con control[3][5]  \n- Paso 4: Emplear bandas elásticas para dominar la fase concéntrica y ganar fuerza[1][2][5]  \n- Paso 5: Probar agarres alternativos (supino o neutro) para facilitar el movimiento y aumentar repeticiones[2]  \n\nHerramientas Necesarias:\n\n- Banda elástica de resistencia variable  \n- Toalla resistente y puerta firme (para remo)  \n- Barra o anillas (opcional pero recomendado para progreso)\n\nErrores Comunes:\n\n- Intentar dominadas completas muy temprano sin preparación → progrese con dominadas negativas y asistidas  \n- No retracción escapular → causa lesiones y poco beneficio muscular  \n- Movimientos rápidos y sin control → reduce eficacia y puede dañar articulaciones  \n\n📊 Recomendaciones para Contenido\n\nÁngulo sugerido:  \nTutorial paso a paso para novatos enfocándose en cómo entrenar en casa sin barra, uso de bandas y alternativas creativas, enfatizando la progresión técnica y prevención de lesiones.\n\nDatos destacados:\n\n- La fuerza para dominadas se logra mejor con combinación de dominadas negativas, asistidas y ejercicios de remo.  \n- Se puede entrenar eficazmente sin gimnasio utilizando toalla, puerta y bandas elásticas.  \n\nEjemplos visuales sugeridos:\n\n- Comparativa de ejercicios de remo horizontal con toalla en casa vs dominadas negativas en barra  \n- Progresión visual del uso de banda elástica para reducir carga de peso corporal  \n- Animación de activación escapular y contracción muscular\n\nTemas a evitar:\n\n- Métodos demasiado avanzados para principiantes que impliquen carga adicional prematura  \n- Técnicas que no expliquen control excéntrico y riesgo de lesión  \n\n📚 Fuentes\n\n- \"Consigue tu primera DOMINADA con esta Rutina\" — YouTube / 2024[1]  \n- \"Cómo hacer dominadas en tan sólo 5 pasos\" — Solo Street Workout / 2025[2]  \n- \"Cómo Hacer Tu Primera Dominada\" — Lara Ibarra YouTube / Ene 2024[3]  \n- \"Estos ejercicios que te ayudarán a conseguir tu primera dominada\" — Vitónica / 2024[4]  \n- \"Cómo conseguir tu primera dominada en tres sencillos pasos\" — Men’s Health España / 2023[5]  \n- \"Dominadas en casa sin barra\" — YouTube / 2023[6]\n\n🧩 Notas del Investigador\n\nCalidad de la información: Alta  \nConfiabilidad de las fuentes: Alta (canales con experiencia y webs especializadas)  \nVacíos de información: Poca estadística específica de usuarios que aprenden dominadas sin equipo, área para futura investigación cuantitativa.  \nObservaciones adicionales: Video tutoriales visuales y combinación con apps para seguimiento podrían potenciar resultados y facilitar la adherencia para audiencia de Horizontes IA.\n```"
+              },
+              "delta": {
+                "role": "assistant",
+                "content": ""
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "IDEAS1": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": {
+              "tema_principal": "Cómo hacer tu primera dominada sin gimnasio",
+              "audiencia_objetivo": "Principiantes y entusiastas de calistenia que desean aprender a hacer dominadas en casa sin equipo de gimnasio",
+              "ideas": [
+                {
+                  "id": 1,
+                  "estructura_usada": "Tutorial/How-To",
+                  "titulo": "Cómo Hacer Tu Primera Dominada Sin Barra en 30 Días",
+                  "subtitulo": "Rutina paso a paso usando bandas elásticas y objetos caseros",
+                  "gancho_sugerido": "¿Sin barra ni gimnasio? ¡Aprende a dominar tu primera dominada en casa desde cero!",
+                  "problema_que_resuelve": "Falta de acceso a gimnasio o barra para realizar dominadas clásicas y la dificultad de la fuerza inicial",
+                  "promesa_principal": "Conseguirás hacer tu primera dominada con progresiones adaptadas y materiales caseros en solo un mes",
+                  "formato_video": "Largo (8-12 min) y versión short (60-90 seg)",
+                  "nivel_dificultad": "Principiante",
+                  "puntos_clave": [
+                    "Ejercicios de dominadas escapulares y colgados para activar músculos",
+                    "Remo invertido con toalla en casa como alternativa sin barra",
+                    "Uso de bandas elásticas para asistencias progresivas",
+                    "Dominadas negativas para fortalecer la fase excéntrica",
+                    "Consejos para técnica correcta y evitar lesiones"
+                  ],
+                  "cta_sugerido": "Descarga gratis el plan de 30 días en mi perfil para empezar hoy",
+                  "keywords_seo": [
+                    "primera dominada sin gimnasio",
+                    "progresión dominadas en casa",
+                    "dominadas bandas elásticas",
+                    "calistenia principiantes"
+                  ],
+                  "potencial_viral": "9/10",
+                  "razon_potencial": "Combinación de accesibilidad, tutorial claro y un desafío aspiracional para muchos principiantes"
+                },
+                {
+                  "id": 2,
+                  "estructura_usada": "Lista/Ranking",
+                  "titulo": "5 Ejercicios Sin Barra para Fortalecer Tus Dominadas en Casa",
+                  "subtitulo": "Entrena la fuerza necesaria sin equipo profesional",
+                  "gancho_sugerido": "No tienes barra en casa? Prueba estos 5 ejercicios para empezar a hacer dominadas ya.",
+                  "problema_que_resuelve": "Dificultad para entrenar fuerza de dominada sin barras o máquinas de gimnasio",
+                  "promesa_principal": "Este set completo te permitirá progresar usando solo objetos caseros y bandas elásticas",
+                  "formato_video": "Short (60-90 seg) / Largo (6-8 min)",
+                  "nivel_dificultad": "Principiante a Intermedio",
+                  "puntos_clave": [
+                    "Dominadas escapulares para activación muscular",
+                    "Remos invertidos h horizontales con toalla en puerta o mesa",
+                    "Dominadas negativas controladas",
+                    "Jalones horizontales con banda elástica",
+                    "Ejercicios complementarios para core y escápulas"
+                  ],
+                  "cta_sugerido": "Guarda este video y practica estos ejercicios 3 veces por semana",
+                  "keywords_seo": [
+                    "ejercicios dominadas sin barra",
+                    "calistenia sin gimnasio",
+                    "fortalecer dominadas en casa"
+                  ],
+                  "potencial_viral": "8/10",
+                  "razon_potencial": "Lista práctica con ejercicios fáciles, visuales y útiles para quienes no tienen equipo"
+                },
+                {
+                  "id": 3,
+                  "estructura_usada": "Problema → Solución",
+                  "titulo": "Si No Tienes Barra para Dominadas, Haz Esto",
+                  "subtitulo": "Alternativas efectivas para entrenar fuerza sin gimnasio",
+                  "gancho_sugerido": "¿Quieres hacer dominadas pero no tienes barra? No hay problema, aquí la solución.",
+                  "problema_que_resuelve": "Falta de barra o espacio para practicar dominadas clásicas en casa",
+                  "promesa_principal": "Aprenderás a usar bandas, toallas y muebles de casa para ganar fuerza y técnica",
+                  "formato_video": "Short (60 seg) / Largo (7-9 min)",
+                  "nivel_dificultad": "Principiante",
+                  "puntos_clave": [
+                    "Cómo hacer remos horizontales usando toalla y puerta",
+                    "Dominadas negativas y técnicas para control excéntrico",
+                    "Uso correcto de bandas elásticas para asistencias",
+                    "Errores comunes que debes evitar para no lesionarte"
+                  ],
+                  "cta_sugerido": "Comenta si te gustaría un plan detallado para avanzar cada semana",
+                  "keywords_seo": [
+                    "dominadas sin barra",
+                    "alternativas dominadas en casa",
+                    "entrenar dominadas sin gimnasio"
+                  ],
+                  "potencial_viral": "8/10",
+                  "razon_potencial": "Gran gancho cotidiano con solución práctica para un problema frecuente en principiantes"
+                },
+                {
+                  "id": 4,
+                  "estructura_usada": "Caso de Éxito/Resultados",
+                  "titulo": "De 0 a 5 Dominadas en 6 Semanas Sin Gimnasio: Mi Historia",
+                  "subtitulo": "Cómo logré hacer mis primeras dominadas en casa con solo bandas y toalla",
+                  "gancho_sugerido": "¿Crees que sin barra no puedes? Mira cómo conseguí 5 dominadas desde casa en 1.5 meses",
+                  "problema_que_resuelve": "Escepticismo sobre si es posible progresar sin barra o gimnasio",
+                  "promesa_principal": "Te mostraré la rutina, progreso semanal y consejos que me funcionaron",
+                  "formato_video": "Largo (10-12 min) con highlights para shorts",
+                  "nivel_dificultad": "Principiante a Intermedio",
+                  "puntos_clave": [
+                    "Progresiones semanales reales y gráficas de fuerza",
+                    "Ejercicios clave realizados sin barra",
+                    "Ajustes en alimentación y motivación",
+                    "Lecciones aprendidas y cómo evitar errores comunes"
+                  ],
+                  "cta_sugerido": "Sigue mi rutina completa descargable en el enlace",
+                  "keywords_seo": [
+                    "dominadas sin barra resultados",
+                    "progreso dominadas casa",
+                    "transformación calistenia"
+                  ],
+                  "potencial_viral": "10/10",
+                  "razon_potencial": "Historia personal con progreso medible genera inspiración, confianza y viralidad emocional"
+                },
+                {
+                  "id": 5,
+                  "estructura_usada": "Opinión / Controversia",
+                  "titulo": "Por Qué Intentar Hacer Dominadas Completas Muy Pronto Te Estanca",
+                  "subtitulo": "La importancia de la progresión y la técnica para dominarla sin lesiones",
+                  "gancho_sugerido": "¿Entrenas dominadas y no avanzas? Estás haciendo este error que nadie te dice.",
+                  "problema_que_resuelve": "Frustración y estancamiento por intentar dominadas completas sin fuerza o técnica suficiente",
+                  "promesa_principal": "Aprenderás por qué dominar la fase excéntrica y asistida es mejor para progresar rápido y seguro",
+                  "formato_video": "Short (60 seg) y largo (8-10 min)",
+                  "nivel_dificultad": "Intermedio",
+                  "puntos_clave": [
+                    "Explicación del rol de la fase negativa",
+                    "Riesgos de la progresión apresurada y lesiones comunes",
+                    "Métodos efectivos para avanzar sin barra ni gimnasio",
+                    "Importancia de la paciencia y constancia"
+                  ],
+                  "cta_sugerido": "Comparte si alguna vez intentaste hacer dominadas completas sin preparación",
+                  "keywords_seo": [
+                    "progresión dominadas",
+                    "errores dominadas",
+                    "no estancarse calistenia"
+                  ],
+                  "potencial_viral": "9/10",
+                  "razon_potencial": "Aborda un error común, promueve reflexión y cambio de hábito en la comunidad fitness"
+                }
+              ],
+              "resumen_estrategico": {
+                "mejor_idea_para_empezar": 1,
+                "razon": "Un tutorial claro y accesible para principiantes con recursos mínimos genera un impacto inicial fuerte, facilita la captación y fidelización del público que busca soluciones prácticas en casa.",
+                "orden_sugerido_publicacion": [
+                  1,
+                  2,
+                  4,
+                  5,
+                  3
+                ],
+                "explicacion_orden": "Comenzar con tutorial paso a paso, luego ejercicios alternativos, seguir con caso de éxito para motivar, después discusión sobre errores comunes para consolidar aprendizaje, y cerrar con soluciones al problema frecuente de no tener barra."
+              }
+            },
+            "refusal": null,
+            "annotations": []
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "Split Out2": [
+      {
+        "json": {
+          "id": 1,
+          "estructura_usada": "Tutorial/How-To",
+          "titulo": "Cómo Hacer Tu Primera Dominada Sin Barra en 30 Días",
+          "subtitulo": "Rutina paso a paso usando bandas elásticas y objetos caseros",
+          "gancho_sugerido": "¿Sin barra ni gimnasio? ¡Aprende a dominar tu primera dominada en casa desde cero!",
+          "problema_que_resuelve": "Falta de acceso a gimnasio o barra para realizar dominadas clásicas y la dificultad de la fuerza inicial",
+          "promesa_principal": "Conseguirás hacer tu primera dominada con progresiones adaptadas y materiales caseros en solo un mes",
+          "formato_video": "Largo (8-12 min) y versión short (60-90 seg)",
+          "nivel_dificultad": "Principiante",
+          "puntos_clave": [
+            "Ejercicios de dominadas escapulares y colgados para activar músculos",
+            "Remo invertido con toalla en casa como alternativa sin barra",
+            "Uso de bandas elásticas para asistencias progresivas",
+            "Dominadas negativas para fortalecer la fase excéntrica",
+            "Consejos para técnica correcta y evitar lesiones"
+          ],
+          "cta_sugerido": "Descarga gratis el plan de 30 días en mi perfil para empezar hoy",
+          "keywords_seo": [
+            "primera dominada sin gimnasio",
+            "progresión dominadas en casa",
+            "dominadas bandas elásticas",
+            "calistenia principiantes"
+          ],
+          "potencial_viral": "9/10",
+          "razon_potencial": "Combinación de accesibilidad, tutorial claro y un desafío aspiracional para muchos principiantes"
+        }
+      },
+      {
+        "json": {
+          "id": 2,
+          "estructura_usada": "Lista/Ranking",
+          "titulo": "5 Ejercicios Sin Barra para Fortalecer Tus Dominadas en Casa",
+          "subtitulo": "Entrena la fuerza necesaria sin equipo profesional",
+          "gancho_sugerido": "No tienes barra en casa? Prueba estos 5 ejercicios para empezar a hacer dominadas ya.",
+          "problema_que_resuelve": "Dificultad para entrenar fuerza de dominada sin barras o máquinas de gimnasio",
+          "promesa_principal": "Este set completo te permitirá progresar usando solo objetos caseros y bandas elásticas",
+          "formato_video": "Short (60-90 seg) / Largo (6-8 min)",
+          "nivel_dificultad": "Principiante a Intermedio",
+          "puntos_clave": [
+            "Dominadas escapulares para activación muscular",
+            "Remos invertidos h horizontales con toalla en puerta o mesa",
+            "Dominadas negativas controladas",
+            "Jalones horizontales con banda elástica",
+            "Ejercicios complementarios para core y escápulas"
+          ],
+          "cta_sugerido": "Guarda este video y practica estos ejercicios 3 veces por semana",
+          "keywords_seo": [
+            "ejercicios dominadas sin barra",
+            "calistenia sin gimnasio",
+            "fortalecer dominadas en casa"
+          ],
+          "potencial_viral": "8/10",
+          "razon_potencial": "Lista práctica con ejercicios fáciles, visuales y útiles para quienes no tienen equipo"
+        }
+      },
+      {
+        "json": {
+          "id": 3,
+          "estructura_usada": "Problema → Solución",
+          "titulo": "Si No Tienes Barra para Dominadas, Haz Esto",
+          "subtitulo": "Alternativas efectivas para entrenar fuerza sin gimnasio",
+          "gancho_sugerido": "¿Quieres hacer dominadas pero no tienes barra? No hay problema, aquí la solución.",
+          "problema_que_resuelve": "Falta de barra o espacio para practicar dominadas clásicas en casa",
+          "promesa_principal": "Aprenderás a usar bandas, toallas y muebles de casa para ganar fuerza y técnica",
+          "formato_video": "Short (60 seg) / Largo (7-9 min)",
+          "nivel_dificultad": "Principiante",
+          "puntos_clave": [
+            "Cómo hacer remos horizontales usando toalla y puerta",
+            "Dominadas negativas y técnicas para control excéntrico",
+            "Uso correcto de bandas elásticas para asistencias",
+            "Errores comunes que debes evitar para no lesionarte"
+          ],
+          "cta_sugerido": "Comenta si te gustaría un plan detallado para avanzar cada semana",
+          "keywords_seo": [
+            "dominadas sin barra",
+            "alternativas dominadas en casa",
+            "entrenar dominadas sin gimnasio"
+          ],
+          "potencial_viral": "8/10",
+          "razon_potencial": "Gran gancho cotidiano con solución práctica para un problema frecuente en principiantes"
+        }
+      },
+      {
+        "json": {
+          "id": 4,
+          "estructura_usada": "Caso de Éxito/Resultados",
+          "titulo": "De 0 a 5 Dominadas en 6 Semanas Sin Gimnasio: Mi Historia",
+          "subtitulo": "Cómo logré hacer mis primeras dominadas en casa con solo bandas y toalla",
+          "gancho_sugerido": "¿Crees que sin barra no puedes? Mira cómo conseguí 5 dominadas desde casa en 1.5 meses",
+          "problema_que_resuelve": "Escepticismo sobre si es posible progresar sin barra o gimnasio",
+          "promesa_principal": "Te mostraré la rutina, progreso semanal y consejos que me funcionaron",
+          "formato_video": "Largo (10-12 min) con highlights para shorts",
+          "nivel_dificultad": "Principiante a Intermedio",
+          "puntos_clave": [
+            "Progresiones semanales reales y gráficas de fuerza",
+            "Ejercicios clave realizados sin barra",
+            "Ajustes en alimentación y motivación",
+            "Lecciones aprendidas y cómo evitar errores comunes"
+          ],
+          "cta_sugerido": "Sigue mi rutina completa descargable en el enlace",
+          "keywords_seo": [
+            "dominadas sin barra resultados",
+            "progreso dominadas casa",
+            "transformación calistenia"
+          ],
+          "potencial_viral": "10/10",
+          "razon_potencial": "Historia personal con progreso medible genera inspiración, confianza y viralidad emocional"
+        }
+      },
+      {
+        "json": {
+          "id": 5,
+          "estructura_usada": "Opinión / Controversia",
+          "titulo": "Por Qué Intentar Hacer Dominadas Completas Muy Pronto Te Estanca",
+          "subtitulo": "La importancia de la progresión y la técnica para dominarla sin lesiones",
+          "gancho_sugerido": "¿Entrenas dominadas y no avanzas? Estás haciendo este error que nadie te dice.",
+          "problema_que_resuelve": "Frustración y estancamiento por intentar dominadas completas sin fuerza o técnica suficiente",
+          "promesa_principal": "Aprenderás por qué dominar la fase excéntrica y asistida es mejor para progresar rápido y seguro",
+          "formato_video": "Short (60 seg) y largo (8-10 min)",
+          "nivel_dificultad": "Intermedio",
+          "puntos_clave": [
+            "Explicación del rol de la fase negativa",
+            "Riesgos de la progresión apresurada y lesiones comunes",
+            "Métodos efectivos para avanzar sin barra ni gimnasio",
+            "Importancia de la paciencia y constancia"
+          ],
+          "cta_sugerido": "Comparte si alguna vez intentaste hacer dominadas completas sin preparación",
+          "keywords_seo": [
+            "progresión dominadas",
+            "errores dominadas",
+            "no estancarse calistenia"
+          ],
+          "potencial_viral": "9/10",
+          "razon_potencial": "Aborda un error común, promueve reflexión y cambio de hábito en la comunidad fitness"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Get many database pages1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many database pages1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "INTERNET1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IDEAS1": {
+      "main": [
+        [
+          {
+            "node": "Split Out2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "TIKTOK1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "YOUTUBE1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GANCHOS1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "IMAGENES1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TIKTOK1": {
+      "main": [
+        [
+          {
+            "node": "Create a page1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "YOUTUBE1": {
+      "main": [
+        [
+          {
+            "node": "Create a page9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GANCHOS1": {
+      "main": [
+        [
+          {
+            "node": "Create a page10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IMAGENES1": {
+      "main": [
+        [
+          {
+            "node": "Split Out3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a page1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a page9": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Create a page10": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Split Out3": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Create a page11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a page11": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Update a database page1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a database page1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "INTERNET1": {
+      "main": [
+        [
+          {
+            "node": "IDEAS1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload an asset from URL1": {
+      "main": [
+        [
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Filter1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter1": {
+      "main": [
+        [
+          {
+            "node": "Upload an asset from URL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "09a9a978-c2df-40ba-b972-7b918e0e54c7",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "21c0325e1496044e8205a16eea2d499b694ef83181b107116d84f7f80ba2ac1b"
+  },
+  "id": "djwBXoADDT1VHR9k",
+  "tags": []
+}
