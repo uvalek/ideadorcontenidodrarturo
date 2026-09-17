@@ -9,6 +9,10 @@ prometer nada.
 
 {{perfil_cliente}}
 
+## NOTAS ADICIONALES SOBRE ESTE CLIENTE
+
+{{conocimiento}}
+
 ## LA IDEA DEL VIDEO
 
 {{idea}}

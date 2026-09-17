@@ -8,6 +8,10 @@ pueda grabar en su consultorio, hablando a cámara, sin producción complicada.
 
 {{perfil_cliente}}
 
+## NOTAS ADICIONALES SOBRE ESTE CLIENTE
+
+{{conocimiento}}
+
 ## ENCARGO
 
 Tema: {{tema}}

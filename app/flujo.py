@@ -38,6 +38,7 @@ Avisar = Callable[[str, int, str], Awaitable[None]]
 class Encargo:
     tema: str
     perfil: dict[str, Any]
+    conocimiento: str = ""
     audiencia: str = ""
     plataforma: str = "ambas"
     num_ideas: int = 5
@@ -65,6 +66,10 @@ class Resultado:
     tokens_salida: int = 0
     advertencias: list[str] = field(default_factory=list)
 
+
+SIN_CONOCIMIENTO = (
+    "(Sin notas adicionales para este cliente.)"
+)
 
 SIN_INVESTIGACION = (
     "(Sin investigación externa. No uses cifras, estudios ni fuentes: no hay "
@@ -113,6 +118,7 @@ async def investigar(cliente: httpx.AsyncClient, encargo: Encargo) -> str:
     sistema = plantillas.construir(
         "investigador",
         perfil_cliente=perfil_mod.formatear(encargo.perfil),
+        conocimiento=encargo.conocimiento or SIN_CONOCIMIENTO,
         tema=encargo.tema,
         fecha=date.today().isoformat(),
         aviso_cofepris=perfil_mod.aviso_cofepris(encargo.perfil),
@@ -129,6 +135,7 @@ async def generar_ideas(
     sistema = plantillas.construir(
         "ideas",
         perfil_cliente=perfil_mod.formatear(encargo.perfil),
+        conocimiento=encargo.conocimiento or SIN_CONOCIMIENTO,
         tema=encargo.tema,
         audiencia=encargo.audiencia or "La que mejor le quede a cada idea",
         plataforma=encargo.plataforma,
@@ -174,6 +181,7 @@ async def piezas_de_una_idea(
 
     comunes = {
         "perfil_cliente": perfil_mod.formatear(encargo.perfil),
+        "conocimiento": encargo.conocimiento or SIN_CONOCIMIENTO,
         "idea": _resumen_idea(idea),
         "investigacion": investigacion or SIN_INVESTIGACION,
         "aviso_cofepris": perfil_mod.aviso_cofepris(encargo.perfil),

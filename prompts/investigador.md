@@ -9,6 +9,10 @@ que nadie está cubriendo bien.
 
 {{perfil_cliente}}
 
+## NOTAS ADICIONALES SOBRE ESTE CLIENTE
+
+{{conocimiento}}
+
 ## TEMA A INVESTIGAR
 
 {{tema}}

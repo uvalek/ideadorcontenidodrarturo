@@ -7,6 +7,10 @@ cámara en su consultorio y lo diga en voz alta, sin teleprompter y sin sonar a 
 
 {{perfil_cliente}}
 
+## NOTAS ADICIONALES SOBRE ESTE CLIENTE
+
+{{conocimiento}}
+
 ## LA IDEA A CONVERTIR EN GUION
 
 {{idea}}
